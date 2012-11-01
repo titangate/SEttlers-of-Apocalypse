@@ -90,7 +90,7 @@ public:
     void scale(double x,double y);// refer to the note above
     
     void setColor(double r,double g,double r,double a=0); //should be obvious
-    void resetColor();// set current color to (255,255,255,255)
+    void resetColor(){setColor(255,255,255,255);}// set current color to (255,255,255,255)
     void setScissor(quad q);// restrict drawing operation in a square area on the screen. if pass in a quad with size
         // (0,0), the scissor should be canceled.
     void clear(double r,double g,double r,double a=0); //clear with given color
