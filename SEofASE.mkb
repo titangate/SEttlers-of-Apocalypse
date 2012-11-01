@@ -41,6 +41,10 @@ files
 {
     [Source]
     (source)
+
+    core.h
+    core.cpp
+
     main.cpp
 
     #Animation library
