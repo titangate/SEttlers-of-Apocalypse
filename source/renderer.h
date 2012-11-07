@@ -22,12 +22,14 @@ enum blendmode{
     alpha,
     subtractive,
     multiplicative,
-}
+};
 
 class ImageData;  // Can be used to create/store Image
 class PixelEffect; // Fragment shader
 
-class Drawable{}; 
+class Drawable{
+
+}; 
 class Canvas:public Drawable{
     // This is supposed to be a frame buffer. Secondary objective, not immediately needed.
     void clear(); // clear the frame buffer
@@ -90,7 +92,7 @@ public:
     void scale(double x,double y);// refer to the note above
     
     void setColor(double r,double g,double r,double a=0); //should be obvious
-    void resetColor()// set current color to white
+    void resetColor();// set current color to white
     void setScissor(quad q);// restrict drawing operation in a square area on the screen. if pass in a quad with size
         // (0,0), the scissor should be canceled.
     void clear(double r,double g,double r,double a=0); //clear with given color
@@ -113,6 +115,7 @@ public:
     
     
     Renderer();
+	~Renderer();
 protected:
     
 };
