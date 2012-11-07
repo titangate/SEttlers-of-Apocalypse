@@ -1,0 +1,2 @@
+^W:\USERS\PATRICK\DOCUMENTS\GITHUB\SETTLERS-OF-APOCALYPSE\SEOFASE.MKB
+"W:\Marmalade\6.1\s3e\python\python.exe" "W:\Marmalade\6.1\s3e\makefile_builder\mkb.py" "w:/Users/Patrick/Documents/GitHub/SEttlers-of-Apocalypse/SEofASE.mkb" "--default-buildenv=vc10" --msvc-project
