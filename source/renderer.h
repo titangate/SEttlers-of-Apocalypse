@@ -29,27 +29,45 @@ class PixelEffect; // Fragment shader
 
 class Drawable{
 
-}; 
+};
+
 class Canvas:public Drawable{
     // This is supposed to be a frame buffer. Secondary objective, not immediately needed.
+public:
     void clear(); // clear the frame buffer
     ImageData * createImageData();
     wrapmode getWrap(wrapdirection d); // repeat or clamp
     void setWrap(wrapdirection,wrapmode);
-    
+	Canvas();
+	~Canvas();
+private:
+	class impl;
+	impl *pImpl;
 };
 class Font:public Drawable{
+public:
     int getHeight(); //Gets the height of the Font in pixels
     int getLineHeight(); //Gets the line height.
     int getWidth(const std::string &s);//Determines the horizontal size a line of text needs.
     int getWrap(const std::string &s);//Returns how many lines text would be wrapped to.
+	Font();
+	~Font();
+private:
+	class impl;
+	impl *pImpl;
 };
 class Image:public Drawable{
     // identical to a Canvas, which is intended. You are welcome to finish this before bother with Canvas
-    void clear(); // clear the frame buffer
+public:
+	void clear(); // clear the frame buffer
     ImageData * createImageData();
     wrapmode getWrap(wrapdirection d); // repeat or clamp
     void setWrap(wrapdirection,wrapmode);
+	Image();
+	~Image();
+private:
+	class impl;
+	impl *pImpl;
 };
 
 // Note:
@@ -63,7 +81,7 @@ public:
     void render();
     ImageData* newImageData(const std::string &s); // Create a image data which should contain the actual file data
     Image* newImage(const std::string &s); // Create a image through a file and destroy the file data afterwards
-    Image* newImage(const ImageData *); // Create a image from a imagedata object. User is expected to decide
+    Image* newImage(const ImageData *id); // Create a image from a imagedata object. User is expected to decide
         // based on their specific situations.
     void draw(const Drawable* drawable,double x=0,double y=0,double r=0,double sx=1,double sy=1,double ox=0,double oy=0);
         // drawable: what you are supposed to draw on current target (can be canvas or screen)
@@ -76,7 +94,7 @@ public:
         // say the picture is a 2*2 tile, in total dimension of 128*128. I want to draw the bot right quarter,
         // I'd pass in a quad with pos(64,64),size(64,64)
     
-    void setFont(Font *);
+    void setFont(Font *font);
     Font * getFont(); // should be obvious
     Font * newFont(const std::string & fontfile,int size);
     // initialize a font with given size. use image font if you feel lazy
@@ -91,11 +109,11 @@ public:
     void rotation(double r);// refer to the note above
     void scale(double x,double y);// refer to the note above
     
-    void setColor(double r,double g,double r,double a=0); //should be obvious
+    void setColor(double r,double g,double b,double a=0); //should be obvious
     void resetColor();// set current color to white
     void setScissor(quad q);// restrict drawing operation in a square area on the screen. if pass in a quad with size
         // (0,0), the scissor should be canceled.
-    void clear(double r,double g,double r,double a=0); //clear with given color
+    void clear(double r,double g,double b,double a=0); //clear with given color
     
     // simple geometrix shape
     void dot(double x,double y);
@@ -105,17 +123,20 @@ public:
     void setLineWidth(double l);
     
     // blend mode
-    void setBlendMode(blendmode);
+    void setBlendMode(blendmode b);
     blendmode getBlendMode();
     
     // pixel effect, don't worry about it for now. doubt we'd ever will.
-    PixelEffect * newPixelEffect(const string &);// initialize fragment shader from the given file
+    PixelEffect * newPixelEffect(const std::string &s);// initialize fragment shader from the given file
     PixelEffect * getPixelEffect();
     void setPixelEffect(PixelEffect *); // when 0, use default fragment shader
     
     
     Renderer();
 	~Renderer();
+private:
+	class impl;
+	impl *pImpl;
 protected:
     
 };
