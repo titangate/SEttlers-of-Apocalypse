@@ -11,4 +11,28 @@
 
 #include <iostream>
 
+class UIBase {
+public:
+    virtual void update(double dt) = 0;
+    virtual void render() = 0;
+};
+
+class Button :public UIBase{
+    
+public:
+    void update(double dt);
+    void render();
+    int x,y,w,h;
+};
+
+
+class REDButton :public UIBase{
+    
+public:
+    void update(double dt);
+    void render();
+    int x,y,w,h;
+    double time;
+};
+
 #endif /* defined(__SEofASE__exampleUI__) */

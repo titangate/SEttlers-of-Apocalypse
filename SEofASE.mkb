@@ -59,6 +59,9 @@ files
     terrain.h
     terrain.cpp
 
+    resource.h
+    resource.cpp
+
     scribbler.h
     scribbler.cpp
 
@@ -114,7 +117,19 @@ files
     ai.h
     ai.cpp
 
+    #demos
+    exampleUI.h
+    exampleUI.cpp
+
+    example.h
+    example.cpp
+
+
     [Data]
     (data)
     #tiles.group
+    Waveform.png
+    
+    (data-ram/data-gles1, data)
+    iw2dstrings.group.bin
 }

@@ -52,6 +52,29 @@ void ExampleRenderer::drawImage(CIw2DImage * image,vec2 pos,double angle,vec2 sc
     //pop();
 };
 
+
+void ExampleRenderer::drawImageQ(CIw2DImage * image,quad q,vec2 pos,double angle,vec2 scale,vec2 origin){
+    CIwSVec2 centre = CIwSVec2(pos.x,pos.y);
+    
+    CIwSVec2 topleft = CIwSVec2(pos.x-origin.x,pos.y-origin.y);
+    //printf("%f\n",angle);
+    iwfixed Fangle = angle*IW_FIXED(1/(M_PI*2));
+    push();
+    CIwMat2D rot = _matrixStack.top();
+    rot.SetRot(Fangle,(CIwVec2)centre);
+    
+    Iw2DSetTransformMatrix(rot);
+    Iw2DDrawImageRegion(image,
+                  centre,
+                  CIwSVec2(image->GetWidth()*scale.x,image->GetHeight()*scale.y),
+                  CIwSVec2(q.pos.x,q.pos.y),
+                  CIwSVec2(q.size.x,q.size.y)
+                  );
+    Iw2DSetTransformMatrix(CIwMat2D::g_Identity);
+    //pop();
+};
+
+
 void ExampleRenderer::push(){
     //_matrixStack.push(_matrixStack.top());
 }

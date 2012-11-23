@@ -30,6 +30,8 @@ public:
                    vec2 origin=vec2(0,0));
     void drawImage(const string &s,vec2 pos,double angle,vec2 scale = vec2(1,1),
                    vec2 origin=vec2(0,0));
+    void drawImageQ(CIw2DImage * image,quad q,vec2 pos,double angle,vec2 scale = vec2(1,1),
+                    vec2 origin=vec2(0,0));
     void printf(const string &s, vec2 pos,CIw2DFontAlign horzAlign = IW_2D_FONT_ALIGN_LEFT,CIw2DFontAlign vertAlign = IW_2D_FONT_ALIGN_TOP,vec2 size=vec2(1000,1000));
     void setColor(uint8 r,uint8 g,uint8 b,uint8 a){
         CIwColour c;

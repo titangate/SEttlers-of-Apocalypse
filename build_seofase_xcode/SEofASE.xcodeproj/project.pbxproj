@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildRule section */
 
-800000000000000000000376 /* PBXBuildRule */ = {
+800000000000000000000397 /* PBXBuildRule */ = {
         isa = PBXBuildRule;
         compilerSpec = com.apple.compilers.proxy.script;
         filePatterns = "*.vp";
@@ -401,54 +401,70 @@
 		A0000000000000000000030f /* Deploy Tool.xcscheme in 'generated files' */ = {isa = PBXBuildFile; fileRef = B00000000000000000000310;  };
 		A00000000000000000000311 /* Release (x86).xcscheme in 'generated files' */ = {isa = PBXBuildFile; fileRef = B00000000000000000000312;  };
 		A00000000000000000000313 /* Release GCC (ARM).xcscheme in 'generated files' */ = {isa = PBXBuildFile; fileRef = B00000000000000000000314;  };
-		A00000000000000000000315 /* app.config.txt in root */ = {isa = PBXBuildFile; fileRef = B00000000000000000000316;  };
-		A00000000000000000000317 /* app.icf in root */ = {isa = PBXBuildFile; fileRef = B00000000000000000000318;  };
-		A00000000000000000000319 /* ai.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000031a;  };
-		A0000000000000000000031c /* ai.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000031d;  };
-		A0000000000000000000031e /* anim.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000031f;  };
-		A00000000000000000000320 /* anim.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000321;  };
-		A00000000000000000000322 /* button.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000323;  };
-		A00000000000000000000324 /* button.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000325;  };
-		A00000000000000000000326 /* control.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000327;  };
-		A00000000000000000000328 /* control.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000329;  };
-		A0000000000000000000032a /* core.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000032b;  };
-		A0000000000000000000032c /* core.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000032d;  };
-		A0000000000000000000032e /* devcard.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000032f;  };
-		A00000000000000000000330 /* devcard.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000331;  };
-		A00000000000000000000332 /* dice.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000333;  };
-		A00000000000000000000334 /* dice.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000335;  };
-		A00000000000000000000336 /* event.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000337;  };
-		A00000000000000000000338 /* event.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000339;  };
-		A0000000000000000000033a /* game.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000033b;  };
-		A0000000000000000000033c /* game.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000033d;  };
-		A0000000000000000000033e /* image.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000033f;  };
-		A00000000000000000000340 /* image.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000341;  };
-		A00000000000000000000342 /* label.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000343;  };
-		A00000000000000000000344 /* label.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000345;  };
-		A00000000000000000000346 /* localise.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000347;  };
-		A00000000000000000000348 /* localise.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000349;  };
-		A0000000000000000000034a /* main.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000034b;  };
-		A0000000000000000000034c /* menu.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000034d;  };
-		A0000000000000000000034e /* menu.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000034f;  };
-		A00000000000000000000350 /* panel.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000351;  };
-		A00000000000000000000352 /* panel.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000353;  };
-		A00000000000000000000354 /* player.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000355;  };
-		A00000000000000000000356 /* player.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000357;  };
-		A00000000000000000000358 /* renderer.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000359;  };
-		A0000000000000000000035a /* renderer.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000035b;  };
-		A0000000000000000000035c /* scribbler.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000035d;  };
-		A0000000000000000000035e /* scribbler.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000035f;  };
-		A00000000000000000000360 /* structure.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000361;  };
-		A00000000000000000000362 /* structure.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000363;  };
-		A00000000000000000000364 /* terrain.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000365;  };
-		A00000000000000000000366 /* terrain.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000367;  };
-		A00000000000000000000368 /* ui.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000369;  };
-		A0000000000000000000036a /* ui.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000036b;  };
-		A0000000000000000000036c /* widget.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000036d;  };
-		A0000000000000000000036e /* widget.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000036f;  };
-		A00000000000000000000370 /* /Users/lolium/SEttlers-of-Apocalypse/data/app.config.txt */ = {isa = PBXBuildFile; fileRef = B00000000000000000000371; };
-		A00000000000000000000372 /* /Users/lolium/SEttlers-of-Apocalypse/data/app.icf */ = {isa = PBXBuildFile; fileRef = B00000000000000000000373; };
-		A00000000000000000000374 /* s3e.icf */ = {isa = PBXBuildFile; fileRef = B00000000000000000000375;  };
+		A00000000000000000000315 /* Waveform.png in Data */ = {isa = PBXBuildFile; fileRef = B00000000000000000000316;  };
+		A00000000000000000000318 /* app.config.txt in root */ = {isa = PBXBuildFile; fileRef = B00000000000000000000319;  };
+		A0000000000000000000031a /* app.icf in root */ = {isa = PBXBuildFile; fileRef = B0000000000000000000031b;  };
+		A0000000000000000000031c /* iw2dstrings.group.bin in Data */ = {isa = PBXBuildFile; fileRef = B0000000000000000000031d;  };
+		A0000000000000000000031e /* ai.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000031f;  };
+		A00000000000000000000321 /* ai.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000322;  };
+		A00000000000000000000323 /* anim.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000324;  };
+		A00000000000000000000325 /* anim.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000326;  };
+		A00000000000000000000327 /* button.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000328;  };
+		A00000000000000000000329 /* button.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000032a;  };
+		A0000000000000000000032b /* control.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000032c;  };
+		A0000000000000000000032d /* control.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000032e;  };
+		A0000000000000000000032f /* core.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000330;  };
+		A00000000000000000000331 /* core.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000332;  };
+		A00000000000000000000333 /* devcard.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000334;  };
+		A00000000000000000000335 /* devcard.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000336;  };
+		A00000000000000000000337 /* dice.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000338;  };
+		A00000000000000000000339 /* dice.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000033a;  };
+		A0000000000000000000033b /* event.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000033c;  };
+		A0000000000000000000033d /* event.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000033e;  };
+		A0000000000000000000033f /* example.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000340;  };
+		A00000000000000000000341 /* example.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000342;  };
+		A00000000000000000000343 /* exampleUI.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000344;  };
+		A00000000000000000000345 /* exampleUI.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000346;  };
+		A00000000000000000000347 /* game.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000348;  };
+		A00000000000000000000349 /* game.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000034a;  };
+		A0000000000000000000034b /* image.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000034c;  };
+		A0000000000000000000034d /* image.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000034e;  };
+		A0000000000000000000034f /* label.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000350;  };
+		A00000000000000000000351 /* label.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000352;  };
+		A00000000000000000000353 /* localise.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000354;  };
+		A00000000000000000000355 /* localise.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000356;  };
+		A00000000000000000000357 /* main.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000358;  };
+		A00000000000000000000359 /* menu.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000035a;  };
+		A0000000000000000000035b /* menu.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000035c;  };
+		A0000000000000000000035d /* panel.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000035e;  };
+		A0000000000000000000035f /* panel.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000360;  };
+		A00000000000000000000361 /* player.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000362;  };
+		A00000000000000000000363 /* player.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000364;  };
+		A00000000000000000000365 /* renderer.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000366;  };
+		A00000000000000000000367 /* renderer.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000368;  };
+		A00000000000000000000369 /* resource.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000036a;  };
+		A0000000000000000000036b /* resource.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000036c;  };
+		A0000000000000000000036d /* scribbler.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000036e;  };
+		A0000000000000000000036f /* scribbler.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000370;  };
+		A00000000000000000000371 /* structure.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000372;  };
+		A00000000000000000000373 /* structure.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000374;  };
+		A00000000000000000000375 /* terrain.cpp in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000376;  };
+		A00000000000000000000377 /* terrain.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000378;  };
+		A00000000000000000000379 /* ui.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000037a;  };
+		A0000000000000000000037b /* ui.h in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000037c;  };
+		A0000000000000000000037d /* widget.cpp in Source */ = {isa = PBXBuildFile; fileRef = B0000000000000000000037e;  };
+		A0000000000000000000037f /* widget.h in Source */ = {isa = PBXBuildFile; fileRef = B00000000000000000000380;  };
+		A00000000000000000000381 /* /Users/lolium/SEttlers-of-Apocalypse/data/.DS_Store */ = {isa = PBXBuildFile; fileRef = B00000000000000000000382; };
+		A00000000000000000000383 /* /Users/lolium/SEttlers-of-Apocalypse/data/app.config.txt */ = {isa = PBXBuildFile; fileRef = B00000000000000000000384; };
+		A00000000000000000000385 /* /Users/lolium/SEttlers-of-Apocalypse/data/app.icf */ = {isa = PBXBuildFile; fileRef = B00000000000000000000386; };
+		A00000000000000000000387 /* /Users/lolium/SEttlers-of-Apocalypse/data/development.icf */ = {isa = PBXBuildFile; fileRef = B00000000000000000000388; };
+		A00000000000000000000389 /* /Users/lolium/SEttlers-of-Apocalypse/data/Fonts */ = {isa = PBXBuildFile; fileRef = B0000000000000000000038a; };
+		A0000000000000000000038b /* /Users/lolium/SEttlers-of-Apocalypse/data/Image.bmp */ = {isa = PBXBuildFile; fileRef = B0000000000000000000038c; };
+		A0000000000000000000038d /* /Users/lolium/SEttlers-of-Apocalypse/data/Iw2DStrings.group */ = {isa = PBXBuildFile; fileRef = B0000000000000000000038e; };
+		A0000000000000000000038f /* /Users/lolium/SEttlers-of-Apocalypse/data/iw2dstrings.group.bin */ = {isa = PBXBuildFile; fileRef = B00000000000000000000390; };
+		A00000000000000000000391 /* /Users/lolium/SEttlers-of-Apocalypse/data/Waveform.png */ = {isa = PBXBuildFile; fileRef = B00000000000000000000392; };
+		A00000000000000000000393 /* /Users/lolium/SEttlers-of-Apocalypse/data/Waveform2.png */ = {isa = PBXBuildFile; fileRef = B00000000000000000000394; };
+		A00000000000000000000395 /* s3e.icf */ = {isa = PBXBuildFile; fileRef = B00000000000000000000396;  };
 
 /* End PBXBuildFile section */
 
@@ -831,54 +847,70 @@
 		B00000000000000000000310 /* Deploy Tool.xcscheme in 'generated files' */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Deploy Tool.xcscheme"; path = "/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/SEofASE.xcodeproj/xcshareddata/xcschemes/Deploy Tool.xcscheme";  sourceTree = "<absolute>"; };
 		B00000000000000000000312 /* Release (x86).xcscheme in 'generated files' */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Release (x86).xcscheme"; path = "/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/SEofASE.xcodeproj/xcshareddata/xcschemes/Release (x86).xcscheme";  sourceTree = "<absolute>"; };
 		B00000000000000000000314 /* Release GCC (ARM).xcscheme in 'generated files' */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Release GCC (ARM).xcscheme"; path = "/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/SEofASE.xcodeproj/xcshareddata/xcschemes/Release GCC (ARM).xcscheme";  sourceTree = "<absolute>"; };
-		B00000000000000000000316 /* app.config.txt in root */ = {isa = PBXFileReference; lastKnownFileType = text; name = "app.config.txt"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/app.config.txt";  sourceTree = "<absolute>"; };
-		B00000000000000000000318 /* app.icf in root */ = {isa = PBXFileReference; lastKnownFileType = text; name = "app.icf"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/app.icf";  sourceTree = "<absolute>"; };
-		B0000000000000000000031a /* ai.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "ai.cpp"; path = "../source/ai.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000031d /* ai.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ai.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/ai.h";  sourceTree = "<absolute>"; };
-		B0000000000000000000031f /* anim.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "anim.cpp"; path = "../source/anim.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000321 /* anim.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "anim.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/anim.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000323 /* button.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "button.cpp"; path = "../source/button.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000325 /* button.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "button.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/button.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000327 /* control.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "control.cpp"; path = "../source/control.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000329 /* control.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "control.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/control.h";  sourceTree = "<absolute>"; };
-		B0000000000000000000032b /* core.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "core.cpp"; path = "../source/core.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000032d /* core.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "core.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/core.h";  sourceTree = "<absolute>"; };
-		B0000000000000000000032f /* devcard.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "devcard.cpp"; path = "../source/devcard.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000331 /* devcard.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "devcard.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/devcard.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000333 /* dice.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "dice.cpp"; path = "../source/dice.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000335 /* dice.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "dice.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/dice.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000337 /* event.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "event.cpp"; path = "../source/event.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000339 /* event.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "event.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/event.h";  sourceTree = "<absolute>"; };
-		B0000000000000000000033b /* game.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "game.cpp"; path = "../source/game.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000033d /* game.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "game.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/game.h";  sourceTree = "<absolute>"; };
-		B0000000000000000000033f /* image.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "image.cpp"; path = "../source/image.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000341 /* image.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "image.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/image.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000343 /* label.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "label.cpp"; path = "../source/label.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000345 /* label.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "label.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/label.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000347 /* localise.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "localise.cpp"; path = "../source/localise.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000349 /* localise.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "localise.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/localise.h";  sourceTree = "<absolute>"; };
-		B0000000000000000000034b /* main.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "main.cpp"; path = "../source/main.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000034d /* menu.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "menu.cpp"; path = "../source/menu.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000034f /* menu.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "menu.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/menu.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000351 /* panel.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "panel.cpp"; path = "../source/panel.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000353 /* panel.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "panel.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/panel.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000355 /* player.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "player.cpp"; path = "../source/player.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000357 /* player.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "player.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/player.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000359 /* renderer.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "renderer.cpp"; path = "../source/renderer.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000035b /* renderer.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "renderer.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/renderer.h";  sourceTree = "<absolute>"; };
-		B0000000000000000000035d /* scribbler.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "scribbler.cpp"; path = "../source/scribbler.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000035f /* scribbler.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "scribbler.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/scribbler.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000361 /* structure.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "structure.cpp"; path = "../source/structure.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000363 /* structure.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "structure.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/structure.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000365 /* terrain.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "terrain.cpp"; path = "../source/terrain.cpp";  sourceTree = SOURCE_ROOT; };
-		B00000000000000000000367 /* terrain.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "terrain.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/terrain.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000369 /* ui.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "ui.cpp"; path = "../source/ui.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000036b /* ui.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ui.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/ui.h";  sourceTree = "<absolute>"; };
-		B0000000000000000000036d /* widget.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "widget.cpp"; path = "../source/widget.cpp";  sourceTree = SOURCE_ROOT; };
-		B0000000000000000000036f /* widget.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "widget.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/widget.h";  sourceTree = "<absolute>"; };
-		B00000000000000000000371 /* /Users/lolium/SEttlers-of-Apocalypse/data/app.config.txt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "app.config.txt"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/app.config.txt";  sourceTree = "<absolute>"; };
-		B00000000000000000000373 /* /Users/lolium/SEttlers-of-Apocalypse/data/app.icf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "app.icf"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/app.icf";  sourceTree = "<absolute>"; };
-		B00000000000000000000375 /* s3e.icf */ = {isa = PBXFileReference; lastKnownFileType = file; name = s3e.icf; path = "/Developer/Marmalade/6.1/s3e/s3e.icf";  sourceTree = "<absolute>"; };
+		B00000000000000000000316 /* Waveform.png in Data */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Waveform.png"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/Waveform.png";  sourceTree = "<absolute>"; };
+		B00000000000000000000319 /* app.config.txt in root */ = {isa = PBXFileReference; lastKnownFileType = text; name = "app.config.txt"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/app.config.txt";  sourceTree = "<absolute>"; };
+		B0000000000000000000031b /* app.icf in root */ = {isa = PBXFileReference; lastKnownFileType = text; name = "app.icf"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/app.icf";  sourceTree = "<absolute>"; };
+		B0000000000000000000031d /* iw2dstrings.group.bin in Data */ = {isa = PBXFileReference; lastKnownFileType = file; name = "iw2dstrings.group.bin"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/iw2dstrings.group.bin";  sourceTree = "<absolute>"; };
+		B0000000000000000000031f /* ai.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "ai.cpp"; path = "../source/ai.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000322 /* ai.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ai.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/ai.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000324 /* anim.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "anim.cpp"; path = "../source/anim.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000326 /* anim.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "anim.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/anim.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000328 /* button.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "button.cpp"; path = "../source/button.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000032a /* button.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "button.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/button.h";  sourceTree = "<absolute>"; };
+		B0000000000000000000032c /* control.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "control.cpp"; path = "../source/control.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000032e /* control.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "control.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/control.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000330 /* core.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "core.cpp"; path = "../source/core.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000332 /* core.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "core.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/core.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000334 /* devcard.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "devcard.cpp"; path = "../source/devcard.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000336 /* devcard.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "devcard.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/devcard.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000338 /* dice.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "dice.cpp"; path = "../source/dice.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000033a /* dice.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "dice.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/dice.h";  sourceTree = "<absolute>"; };
+		B0000000000000000000033c /* event.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "event.cpp"; path = "../source/event.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000033e /* event.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "event.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/event.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000340 /* example.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "example.cpp"; path = "../source/example.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000342 /* example.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "example.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/example.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000344 /* exampleUI.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "exampleUI.cpp"; path = "../source/exampleUI.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000346 /* exampleUI.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "exampleUI.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/exampleUI.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000348 /* game.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "game.cpp"; path = "../source/game.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000034a /* game.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "game.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/game.h";  sourceTree = "<absolute>"; };
+		B0000000000000000000034c /* image.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "image.cpp"; path = "../source/image.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000034e /* image.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "image.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/image.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000350 /* label.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "label.cpp"; path = "../source/label.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000352 /* label.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "label.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/label.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000354 /* localise.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "localise.cpp"; path = "../source/localise.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000356 /* localise.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "localise.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/localise.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000358 /* main.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "main.cpp"; path = "../source/main.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000035a /* menu.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "menu.cpp"; path = "../source/menu.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000035c /* menu.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "menu.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/menu.h";  sourceTree = "<absolute>"; };
+		B0000000000000000000035e /* panel.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "panel.cpp"; path = "../source/panel.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000360 /* panel.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "panel.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/panel.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000362 /* player.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "player.cpp"; path = "../source/player.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000364 /* player.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "player.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/player.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000366 /* renderer.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "renderer.cpp"; path = "../source/renderer.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000368 /* renderer.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "renderer.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/renderer.h";  sourceTree = "<absolute>"; };
+		B0000000000000000000036a /* resource.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "resource.cpp"; path = "../source/resource.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000036c /* resource.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "resource.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/resource.h";  sourceTree = "<absolute>"; };
+		B0000000000000000000036e /* scribbler.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "scribbler.cpp"; path = "../source/scribbler.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000370 /* scribbler.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "scribbler.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/scribbler.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000372 /* structure.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "structure.cpp"; path = "../source/structure.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000374 /* structure.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "structure.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/structure.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000376 /* terrain.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "terrain.cpp"; path = "../source/terrain.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000378 /* terrain.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "terrain.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/terrain.h";  sourceTree = "<absolute>"; };
+		B0000000000000000000037a /* ui.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "ui.cpp"; path = "../source/ui.cpp";  sourceTree = SOURCE_ROOT; };
+		B0000000000000000000037c /* ui.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ui.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/ui.h";  sourceTree = "<absolute>"; };
+		B0000000000000000000037e /* widget.cpp in Source */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "widget.cpp"; path = "../source/widget.cpp";  sourceTree = SOURCE_ROOT; };
+		B00000000000000000000380 /* widget.h in Source */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "widget.h"; path = "/Users/lolium/SEttlers-of-Apocalypse/source/widget.h";  sourceTree = "<absolute>"; };
+		B00000000000000000000382 /* /Users/lolium/SEttlers-of-Apocalypse/data/.DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; name = ".DS_Store"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/.DS_Store";  sourceTree = "<absolute>"; };
+		B00000000000000000000384 /* /Users/lolium/SEttlers-of-Apocalypse/data/app.config.txt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "app.config.txt"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/app.config.txt";  sourceTree = "<absolute>"; };
+		B00000000000000000000386 /* /Users/lolium/SEttlers-of-Apocalypse/data/app.icf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "app.icf"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/app.icf";  sourceTree = "<absolute>"; };
+		B00000000000000000000388 /* /Users/lolium/SEttlers-of-Apocalypse/data/development.icf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "development.icf"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/development.icf";  sourceTree = "<absolute>"; };
+		B0000000000000000000038a /* A00000000000000000000389 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Fonts"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/Fonts";  sourceTree = "<absolute>"; };
+		B0000000000000000000038c /* /Users/lolium/SEttlers-of-Apocalypse/data/Image.bmp */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Image.bmp"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/Image.bmp";  sourceTree = "<absolute>"; };
+		B0000000000000000000038e /* /Users/lolium/SEttlers-of-Apocalypse/data/Iw2DStrings.group */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Iw2DStrings.group"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/Iw2DStrings.group";  sourceTree = "<absolute>"; };
+		B00000000000000000000390 /* /Users/lolium/SEttlers-of-Apocalypse/data/iw2dstrings.group.bin */ = {isa = PBXFileReference; lastKnownFileType = file; name = "iw2dstrings.group.bin"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/iw2dstrings.group.bin";  sourceTree = "<absolute>"; };
+		B00000000000000000000392 /* /Users/lolium/SEttlers-of-Apocalypse/data/Waveform.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Waveform.png"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/Waveform.png";  sourceTree = "<absolute>"; };
+		B00000000000000000000394 /* /Users/lolium/SEttlers-of-Apocalypse/data/Waveform2.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Waveform2.png"; path = "/Users/lolium/SEttlers-of-Apocalypse/data/Waveform2.png";  sourceTree = "<absolute>"; };
+		B00000000000000000000396 /* s3e.icf */ = {isa = PBXFileReference; lastKnownFileType = file; name = s3e.icf; path = "/Developer/Marmalade/6.1/s3e/s3e.icf";  sourceTree = "<absolute>"; };
 
 /* End PBXFileReference section */
 
@@ -916,9 +948,10 @@
 				C00000000000000000000301,
 				B00000000000000000000307,
 				C0000000000000000000030a,
-				B00000000000000000000316,
-				B00000000000000000000318,
-				C0000000000000000000031b,
+				C00000000000000000000317,
+				B00000000000000000000319,
+				B0000000000000000000031b,
+				C00000000000000000000320,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1057,6 +1090,16 @@
 			sourceTree = "<group>";
 		};
 
+		C00000000000000000000317 /* Data */ =  {
+			isa = PBXGroup;
+			children = (
+				B00000000000000000000316,
+				B0000000000000000000031d,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+
 		C00000000000000000000129 /* EGL */ =  {
 			isa = PBXGroup;
 			children = (
@@ -1123,52 +1166,58 @@
 			sourceTree = "<group>";
 		};
 
-		C0000000000000000000031b /* Source */ =  {
+		C00000000000000000000320 /* Source */ =  {
 			isa = PBXGroup;
 			children = (
-				B0000000000000000000031a,
-				B0000000000000000000031d,
 				B0000000000000000000031f,
-				B00000000000000000000321,
-				B00000000000000000000323,
-				B00000000000000000000325,
-				B00000000000000000000327,
-				B00000000000000000000329,
-				B0000000000000000000032b,
-				B0000000000000000000032d,
-				B0000000000000000000032f,
-				B00000000000000000000331,
-				B00000000000000000000333,
-				B00000000000000000000335,
-				B00000000000000000000337,
-				B00000000000000000000339,
-				B0000000000000000000033b,
-				B0000000000000000000033d,
-				B0000000000000000000033f,
-				B00000000000000000000341,
-				B00000000000000000000343,
-				B00000000000000000000345,
-				B00000000000000000000347,
-				B00000000000000000000349,
-				B0000000000000000000034b,
-				B0000000000000000000034d,
-				B0000000000000000000034f,
-				B00000000000000000000351,
-				B00000000000000000000353,
-				B00000000000000000000355,
-				B00000000000000000000357,
-				B00000000000000000000359,
-				B0000000000000000000035b,
-				B0000000000000000000035d,
-				B0000000000000000000035f,
-				B00000000000000000000361,
-				B00000000000000000000363,
-				B00000000000000000000365,
-				B00000000000000000000367,
-				B00000000000000000000369,
-				B0000000000000000000036b,
-				B0000000000000000000036d,
-				B0000000000000000000036f,
+				B00000000000000000000322,
+				B00000000000000000000324,
+				B00000000000000000000326,
+				B00000000000000000000328,
+				B0000000000000000000032a,
+				B0000000000000000000032c,
+				B0000000000000000000032e,
+				B00000000000000000000330,
+				B00000000000000000000332,
+				B00000000000000000000334,
+				B00000000000000000000336,
+				B00000000000000000000338,
+				B0000000000000000000033a,
+				B0000000000000000000033c,
+				B0000000000000000000033e,
+				B00000000000000000000340,
+				B00000000000000000000342,
+				B00000000000000000000344,
+				B00000000000000000000346,
+				B00000000000000000000348,
+				B0000000000000000000034a,
+				B0000000000000000000034c,
+				B0000000000000000000034e,
+				B00000000000000000000350,
+				B00000000000000000000352,
+				B00000000000000000000354,
+				B00000000000000000000356,
+				B00000000000000000000358,
+				B0000000000000000000035a,
+				B0000000000000000000035c,
+				B0000000000000000000035e,
+				B00000000000000000000360,
+				B00000000000000000000362,
+				B00000000000000000000364,
+				B00000000000000000000366,
+				B00000000000000000000368,
+				B0000000000000000000036a,
+				B0000000000000000000036c,
+				B0000000000000000000036e,
+				B00000000000000000000370,
+				B00000000000000000000372,
+				B00000000000000000000374,
+				B00000000000000000000376,
+				B00000000000000000000378,
+				B0000000000000000000037a,
+				B0000000000000000000037c,
+				B0000000000000000000037e,
+				B00000000000000000000380,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -1543,9 +1592,17 @@
 		B0000000000000000000000c /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B00000000000000000000371,
-				B00000000000000000000373,
-				B00000000000000000000375,
+				B00000000000000000000382,
+				B00000000000000000000384,
+				B00000000000000000000386,
+				B00000000000000000000388,
+				B0000000000000000000038a,
+				B0000000000000000000038c,
+				B0000000000000000000038e,
+				B00000000000000000000390,
+				B00000000000000000000392,
+				B00000000000000000000394,
+				B00000000000000000000396,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1737,7 +1794,7 @@ s3e_plink -o \"/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/build/${
 				shell_script_object5 /* s3e_plink */,
 				shell_script_object6 /* s3e_plink */,
 			);
-			buildRules = (800000000000000000000376			
+			buildRules = (800000000000000000000397			
 			);
 			dependencies = (
 			);
@@ -1784,28 +1841,31 @@ s3e_plink -o \"/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/build/${
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A00000000000000000000319,
 				A0000000000000000000031e,
-				A00000000000000000000322,
-				A00000000000000000000326,
-				A0000000000000000000032a,
-				A0000000000000000000032e,
-				A00000000000000000000332,
-				A00000000000000000000336,
-				A0000000000000000000033a,
-				A0000000000000000000033e,
-				A00000000000000000000342,
-				A00000000000000000000346,
-				A0000000000000000000034a,
-				A0000000000000000000034c,
-				A00000000000000000000350,
-				A00000000000000000000354,
-				A00000000000000000000358,
-				A0000000000000000000035c,
-				A00000000000000000000360,
-				A00000000000000000000364,
-				A00000000000000000000368,
-				A0000000000000000000036c,
+				A00000000000000000000323,
+				A00000000000000000000327,
+				A0000000000000000000032b,
+				A0000000000000000000032f,
+				A00000000000000000000333,
+				A00000000000000000000337,
+				A0000000000000000000033b,
+				A0000000000000000000033f,
+				A00000000000000000000343,
+				A00000000000000000000347,
+				A0000000000000000000034b,
+				A0000000000000000000034f,
+				A00000000000000000000353,
+				A00000000000000000000357,
+				A00000000000000000000359,
+				A0000000000000000000035d,
+				A00000000000000000000361,
+				A00000000000000000000365,
+				A00000000000000000000369,
+				A0000000000000000000036d,
+				A00000000000000000000371,
+				A00000000000000000000375,
+				A00000000000000000000379,
+				A0000000000000000000037d,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
