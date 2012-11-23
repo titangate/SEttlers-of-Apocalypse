@@ -13,8 +13,8 @@ public:
     : x(0.0f), y(0.0f)
     {
     }
-    vec2(float _x, float _y)
-    : x(_x), y(_y)
+    vec2(double a,double b)
+    : x(a), y(b)
     {
     }
     vec2(const vec2 &v)
@@ -140,10 +140,16 @@ inline  float       operator    ^   (const vec2 &v1, const vec2 &v2)
     return v1.x * v2.y - v1.y * v2.x;
 }
 
-typedef struct{
+class quad{
+public:
     vec2 pos;
     vec2 size;
-} quad;
+    bool contain(const vec2& p){
+        return p.x-pos.x >= 0 && p.x-pos.x <= size.x &&
+        p.y-pos.y >= 0 && p.y-pos.y <= size.y;
+    }
+    quad(const vec2& p,const vec2& s):pos(p),size(s){}
+};
 
 
 typedef struct{

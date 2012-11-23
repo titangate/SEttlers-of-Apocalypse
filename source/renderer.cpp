@@ -1,7 +1,7 @@
 #include "renderer.h"
 #include <string>
 #include "Iw2D.h"
-
+/*
 class ImageData {
 private:
 	CIw2DImage *img;
@@ -262,4 +262,4 @@ void Image::clear(){pImpl->clear();}
 ImageData *Image::createImageData(){pImpl->clear();}
 wrapmode Image::getWrap(wrapdirection d){pImpl->clear();}
 void Image::setWrap(wrapdirection,wrapmode){pImpl->clear();}
-
+*/
