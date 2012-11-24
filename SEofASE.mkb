@@ -124,12 +124,11 @@ files
     example.h
     example.cpp
 
-
     [Data]
     (data)
     #tiles.group
     Waveform.png
-    
+
     (data-ram/data-gles1, data)
     iw2dstrings.group.bin
 }

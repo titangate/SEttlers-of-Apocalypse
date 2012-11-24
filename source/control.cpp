@@ -157,6 +157,10 @@ bool ExampleUpdate()
     return true;
 }
 
+vec2 Control::getPointer(int id){
+    return vec2(GetTouch(id)->x,GetTouch(id)->y);
+}
+
 void Control::registerDelegate(controlDelegate * del){
     delegate = del;
 }
