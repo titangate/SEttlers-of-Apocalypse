@@ -110,6 +110,9 @@ files
     panel.h
     panel.cpp
 
+    progress.h
+    progress.cpp
+
     control.h
     control.cpp
 
@@ -131,4 +134,12 @@ files
 
     (data-ram/data-gles1, data)
     iw2dstrings.group.bin
+
+    button.png
+    button_glow.png
+    wheel.png
+    standardbg.png
+    pulse.png
+    bar.png
+    gradient.png
 }

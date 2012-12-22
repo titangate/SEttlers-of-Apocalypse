@@ -58,7 +58,7 @@ public:
     }
     inline  float       Length          () const
     {
-        return sqrt(sqrt(x) + sqrt(y));
+        return sqrt(x*x + y*y);
     }
     inline  float       QuadLength      () const
     {
@@ -96,6 +96,9 @@ public:
         x = -x;
         y = -y;
         return *this;
+    }
+    inline double angleWith(const vec2 &b){
+        return atan2(b.y-this->y, b.x-this->x);
     }
 };
 
@@ -147,6 +150,9 @@ public:
     bool contain(const vec2& p){
         return p.x-pos.x >= 0 && p.x-pos.x <= size.x &&
         p.y-pos.y >= 0 && p.y-pos.y <= size.y;
+    }
+    quad():pos(0,0),size(0,0){
+        
     }
     quad(const vec2& p,const vec2& s):pos(p),size(s){}
 };

@@ -22,7 +22,7 @@ public:
     virtual void update(double dt);
     virtual void render();
     //virtual void renderUI();
-    virtual void animAcquire(const Terrain& t,const Structure& s);
+    //virtual void animAcquire(const Terrain& t,const Structure& s);
     int getCount();
     bool spend(int amount);
     

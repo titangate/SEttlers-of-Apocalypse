@@ -157,13 +157,33 @@ bool ExampleUpdate()
     return true;
 }
 
-vec2 Control::getPointer(int id){
-    return vec2(GetTouch(id)->x,GetTouch(id)->y);
+CTouch* Control::getPointer(int id){
+    return GetTouch(id);
 }
+
+Control::Control(){ExampleInit();}
 
 void Control::registerDelegate(controlDelegate * del){
     delegate = del;
 }
 void Control::unregisterDelegate(){
     delegate = 0;
+}
+
+void Control::pointerPressed (double x,double y, s3ePointerButton key,int id){
+    if (delegate) {
+        delegate->pointerPressed(x,y,key,id);
+    }
+}
+void Control::pointerReleased (double x,double y, s3ePointerButton key,int id){
+    
+    if (delegate) {
+        delegate->pointerReleased(x,y,key,id);
+    }
+}
+void Control::pointerMotion( double x, double y, int id){
+    
+    if (delegate) {
+        delegate->pointerMotion(x,y,id);
+    }
 }

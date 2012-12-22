@@ -8,6 +8,7 @@
 #include <map>
 class Widget;
 typedef  void (*WidgetCallback)(const Widget *, const Event) ;
+typedef void (Widget::*setter)(double v);
 typedef std::vector<Widget*> widgetlist;
 typedef std::map< std::string, WidgetCallback > callbacklist;
 class Widget{
@@ -34,7 +35,22 @@ public:
     virtual void removeFromParent();
     virtual void clearChildren();
     virtual bool hovered(vec2 p);
-    Widget(Widget * pa,vec2 p,vec2 s,bool vis = true):parent(pa),dimension(p,s),visibility(vis){}
+    virtual void setValue(const std::string& s,double v){
+        static std::map<std::string,setter> _t;
+        if (_t.empty()) {
+            
+            
+            _t["x"] = &Widget::setX;
+            _t["y"] = &Widget::setY;
+        }
+        if (_t.find(s)!=_t.end()) {
+            (this->*_t[s])(v);
+        }
+    }
+    Widget(Widget * pa,vec2 p,vec2 s,bool vis = true):parent(pa),visibility(vis){
+        setPosition(p);
+        setSize(s);
+        if(pa)pa->addChild(this);}
 };
 
 #endif

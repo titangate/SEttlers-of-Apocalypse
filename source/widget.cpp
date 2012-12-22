@@ -1,7 +1,7 @@
 #include "widget.h"
 Control &c = Control::getInstance();
 void Widget::pointerPressed(vec2 p, s3ePointerButton key,int id){
-    for(widgetlist::iterator i = parent->children.begin(); i < parent->children.end(); i++){
+    for(widgetlist::iterator i = parent->children.begin(); i != parent->children.end(); i++){
         if((*i)->hovered(p)){
             (*i)->pointerPressed(p,key,id);
         } else {
@@ -10,7 +10,7 @@ void Widget::pointerPressed(vec2 p, s3ePointerButton key,int id){
     }
 }
 void Widget::pointerReleased(vec2 p, s3ePointerButton key,int id){
-    for(widgetlist::iterator i = parent->children.begin(); i < parent->children.end(); i++){
+    for(widgetlist::iterator i = parent->children.begin(); i != parent->children.end(); i++){
         if((*i)->hovered(p)){
             (*i)->pointerReleased(p,key,id);
         } else {
@@ -22,13 +22,13 @@ void Widget::registerEvent(std::string event,WidgetCallback cb){
     cblist[event] = cb;
 }
 void Widget::update(double dt){
-    for (widgetlist::iterator i = children.begin(); i<children.end(); i++) {
+    for (widgetlist::iterator i = children.begin(); i!=children.end(); i++) {
         (*i)->update(dt);
     }
 }
 void Widget::render(){
     if (!visibility) return;
-    for (widgetlist::iterator i = children.begin(); i<children.end(); i++) {
+    for (widgetlist::iterator i = children.begin(); i!=children.end(); i++) {
         (*i)->render();
     }
 

@@ -24,7 +24,7 @@ struct CTouch
 class Control {
 protected:
     void update(double dt);
-    Control(){}
+    Control();
     controlDelegate * delegate;
 public:
     static Control & getInstance(){
@@ -36,6 +36,6 @@ public:
     void pointerPressed (double x,double y, s3ePointerButton key,int id);
     void pointerReleased (double x,double y, s3ePointerButton key,int id);
     void pointerMotion( double x, double y, int id);
-    vec2 getPointer(int id);
+    CTouch* getPointer(int id);
 };
 #endif

@@ -1,10 +1,13 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 #include "panel.h"
+#include <string>
+using namespace std;
 class Button:public Widget{
 public:
     void pointerReleased(vec2 p, s3ePointerButton key,int id);
     void render() ;
+    void update (double dt);
     /*
     void pointerPressed(CTouch * c);
     void registerEvent(std::string event,WidgetCallback) ;
@@ -17,7 +20,10 @@ public:
     void addChild(Widget * child) ;
     void removeFromParent();
     void clearChildren();*/
-    
+    void setText(const string & s){text = s;}
+    Button(Widget * pa,vec2 p,vec2 s,bool vis = true);
+double dt;
+    string text;
 };
 
 #endif

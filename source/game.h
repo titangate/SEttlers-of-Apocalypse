@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "player.h"
+#include "example.h"
 
 struct map_coord {
     int x,y;
@@ -10,16 +11,17 @@ struct map_coord {
 using namespace std;
 
 class Game {
-    vector<Player*> player;
-    
+    vector<Chip*> c;
+    vector<Wire*> w;    
 public:
+    void initDemo(Widget *base);
     void update(double dt);
     void render();
     void randomTerrain();
-    Player * checkVictory();
+    void constructCircuits();
     
-    bool construct(Player *,Structure*, map_coord);
-    bool canConstruct(Structure *);
+   // bool construct(Player *,Structure*, map_coord);
+    //bool canConstruct(Structure *);
 };
 
 #endif

@@ -7,14 +7,12 @@
 #include "structure.h"
 
 using namespace std;
-
+class Chip;
 class Player {
-    vector<Resource*> resource;
-    vector<Structure*> structure;
+    vector<Chip*> chips;
+    uint8 r,g,b,a;
     
 public:
-    void update(double dt);
-    void render();
     
 };
 

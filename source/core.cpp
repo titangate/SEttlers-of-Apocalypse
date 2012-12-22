@@ -58,7 +58,7 @@ public:
     }
     inline  float       Length          () const
     {
-        return sqrt(sqrt(x) + sqrt(y));
+        return sqrt(x*x + y*y);
     }
     inline  float       QuadLength      () const
     {

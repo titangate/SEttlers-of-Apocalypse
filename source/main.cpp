@@ -4,6 +4,9 @@
 #include "Iw2D.h"
 #include "IwGx.h"
 #include "anim.h"
+#include "button.h"
+#include "structure.h"
+#include "game.h"
 
 #include <vector>
 
@@ -16,7 +19,7 @@ int main()
     Iw2DInit();
 
     // Set the default background clear colour
-    IwGxSetColClear(0x40, 0x40, 0x40, 0);
+    IwGxSetColClear(0x00, 0x00, 0x00, 0);
     
     
     IwResManagerInit();
@@ -27,17 +30,19 @@ int main()
     // Prepare the iwgxfont resource for rendering using Iw2D
     g_Font = Iw2DCreateFontResource("arial14");
     Iw2DSetFont(g_Font);
-    
-    
-    Button1 * b = new Button1();
-    b->x = 10;
-    b->y = 10;
-    b->w = 50;
-    b->h = 30;
-    Anim::getInstance().animate(b,&Widget::setX,10,100,2,"quadIn");
+    uint32 sw = IwGxGetScreenWidth(); // returns 176
+    uint32 sh = IwGxGetScreenHeight();
+    Widget * base = new Widget(0,vec2(0,0),vec2(sw,sh));
+    Panel * p = new Panel(base,vec2(50,50),vec2(256,256));
+    Game * g = new Game();
+    g->initDemo(base);
+    p->generateButton("button1");
+    p->generateButton("button2");
+        //Button * b = new Button(p,vec2(100,100),vec2(200,50)); b->setText("adsfasdf");
+   
     // Initialise Marmalade graphics system and Iw2D module
-    std::vector<Widget *> v;
-    v.push_back(b);
+    //std::vector<Widget *> v;
+    //v.push_back(b);
     uint32 timer = (uint32)s3eTimerGetMs();
     // Main Game Loop
     while (!s3eDeviceCheckQuitRequest())
@@ -46,7 +51,7 @@ int main()
         s3eKeyboardUpdate();
         if (s3eKeyboardGetState(s3eKeyAbsBSK) & S3E_KEY_STATE_DOWN)    // Back key is used to exit on some platforms
             break;
-        int delta = uint32(s3eTimerGetMs()) - timer;
+        double delta = s3eTimerGetMs() - timer;
         timer += delta;
         
         // Make sure the delta-time value is safe
@@ -54,8 +59,7 @@ int main()
             delta = 0;
         if (delta > 100)
             delta = 100;
-        Anim::getInstance().update(delta/1000.0);
-        //UpdateInput(delta);
+        delta /= 1000.0;
         
         // Update pointer system
         s3ePointerUpdate();
@@ -64,15 +68,12 @@ int main()
         IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
         
         // Update the game
-        for (int i=0; i<v.size(); i++) {
-            v[i]->update(delta);
-        }
-        
-        // Render the games view
-        for (int i=0; i<v.size(); i++) {
-            v[i]->render();
-        }
-        
+        Anim<Panel>::getInstance().update(delta);
+        //printf("%.2f",delta);
+        base->update(delta);
+        g->update(delta);
+        base->render();
+        g->render();
         // Show the surface
         Iw2DSurfaceShow();
         

@@ -4,21 +4,17 @@
 class Panel;
 class Panel : public Widget{
 public:
-    
-    void pointerPressed(CTouch * c);
-    void pointerReleased(CTouch * c);
-    void registerEvent(std::string event,WidgetCallback) ;
+    double dt;
     void update(double dt) ;
     void render() ;
-    vec2 getPosition() ;
-    void setPosition(vec2) ;
-    vec2 getSize() ;
-    void setSize(vec2) ;
-    void setVisible(bool vis) ;
-    void addChild(Widget * child) ;
-    void removeFromParent();
-    void clearChildren();
-
+    void expand();
+    void close();
+    double percentsize;
+    Panel(Widget * pa,vec2 p,vec2 s,bool vis = true);
+    void setPercent(double p);
+    
+    int state;
+    void generateButton(const std::string& s);
 };
 
 #endif
