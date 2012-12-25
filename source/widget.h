@@ -19,6 +19,7 @@ public:
     Widget * parent;
     callbacklist cblist;
 public:
+    virtual ~Widget(){}
     virtual void pointerPressed(vec2 p, s3ePointerButton key,int id);
     virtual void pointerReleased(vec2 p, s3ePointerButton key,int id);
     virtual void registerEvent(std::string event,WidgetCallback);
@@ -35,11 +36,10 @@ public:
     virtual void removeFromParent();
     virtual void clearChildren();
     virtual bool hovered(vec2 p);
+    virtual vec2 getCentre();
     virtual void setValue(const std::string& s,double v){
         static std::map<std::string,setter> _t;
         if (_t.empty()) {
-            
-            
             _t["x"] = &Widget::setX;
             _t["y"] = &Widget::setY;
         }

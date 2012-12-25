@@ -47,6 +47,9 @@ void Widget::setX(double x){
 void Widget::setY(double y){
     setPosition(vec2(dimension.pos.x,y));
 }
+vec2 Widget::getCentre(){
+    return dimension.pos + dimension.size/2;
+}
 vec2 Widget::getSize(){return dimension.size;}
 void Widget::setSize(vec2 s){dimension.size = s;}
 void Widget::setVisible(bool vis){

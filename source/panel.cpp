@@ -19,7 +19,7 @@ void Panel::generateButton(const std::string& s){
     Button* b = new Button(this,vec2(0,0),vec2(50,50));
     b->setText(s);
     addChild(b);
-    for (int i=0; i<children.size(); i++) {
+    for (unsigned int i=0; i<children.size(); i++) {
         double angle = i*M_PI*2/children.size();
         children[i]->setPosition(vec2(cos(angle),sin(angle))*90-vec2(25,10)+dimension.pos+dimension.size/2);
     }

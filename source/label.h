@@ -5,8 +5,8 @@ class Widget;
 class Label : public Widget{
 public:
     
-    void pointerPressed(CTouch * c);
-    void pointerReleased(CTouch * c);
+    virtual void pointerPressed(CTouch * c);
+    virtual void pointerReleased(CTouch * c);
     void registerEvent(std::string event,WidgetCallback) ;
     void update(double dt) ;
     void render() ;

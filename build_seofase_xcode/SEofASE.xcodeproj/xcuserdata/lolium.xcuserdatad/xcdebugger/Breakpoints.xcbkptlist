@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../source/widget.h"
-         timestampString = "373498896.796591"
+         timestampString = "378081933.104597"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "26"
-         endingLineNumber = "26"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
          landmarkName = "class Widget"
          landmarkType = "3">
       </FileBreakpoint>
@@ -352,19 +352,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../source/structure.cpp"
-         timestampString = "377733751.867963"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
-         landmarkName = "Chip::Chip(Widget * pa,vec2 p,vec2 s,bool vis)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "../source/progress.h"
          timestampString = "377645753.414796"
          startingColumnNumber = "9223372036854775807"
@@ -405,25 +392,155 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../source/game.cpp"
-         timestampString = "377733901.755437"
+         timestampString = "378081761.186583"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
-         landmarkName = "Game::constructCircuits()"
-         landmarkType = "5">
+         startingLineNumber = "43"
+         endingLineNumber = "43"
+         landmarkName = "class CompareItem"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../source/structure.h"
-         timestampString = "377734046.207708"
+         timestampString = "378081611.053661"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "77"
          endingLineNumber = "77"
          landmarkName = "Current(Wire *w,int currentSegment = 1,double speed = 100,bool reverse = false,CurrentCallback callback = 0)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
+         landmarkName = "astar(vec2i start,vec2i finish,vector&lt;vector&lt;Widget*&gt; &gt; g,Widget* startWidget,Widget* finishWidget,Widget* boundaryWidget)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "103"
+         endingLineNumber = "103"
+         landmarkName = "astar(vec2i start,vec2i finish,vector&lt;vector&lt;Widget*&gt; &gt; g,Widget* startWidget,Widget* finishWidget,Widget* boundaryWidget)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
+         landmarkName = "astar(vec2i start,vec2i finish,vector&lt;vector&lt;Widget*&gt; &gt; g,Widget* startWidget,Widget* finishWidget,Widget* boundaryWidget)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "130"
+         endingLineNumber = "130"
+         landmarkName = "astar(vec2i start,vec2i finish,vector&lt;vector&lt;Widget*&gt; &gt; g,Widget* startWidget,Widget* finishWidget,Widget* boundaryWidget)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
+         landmarkName = "astar(vec2i start,vec2i finish,vector&lt;vector&lt;Widget*&gt; &gt; g,Widget* startWidget,Widget* finishWidget,Widget* boundaryWidget)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "122"
+         endingLineNumber = "122"
+         landmarkName = "astar(vec2i start,vec2i finish,vector&lt;vector&lt;Widget*&gt; &gt; g,Widget* startWidget,Widget* finishWidget,Widget* boundaryWidget)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
+         landmarkName = "astar(vec2i start,vec2i finish,vector&lt;vector&lt;Widget*&gt; &gt; g,Widget* startWidget,Widget* finishWidget,Widget* boundaryWidget)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "constructPath(map&lt;vec2i, vec2i&gt; &amp;comefrom,vector&lt;vector&lt;Widget*&gt; &gt; g,vec2i finish,Widget* source)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
+         landmarkName = "astar(vec2i start,vec2i finish,vector&lt;vector&lt;Widget*&gt; &gt; g,Widget* startWidget,Widget* finishWidget,Widget* boundaryWidget)"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../source/game.cpp"
+         timestampString = "378081761.186583"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "48"
+         endingLineNumber = "48"
+         landmarkName = "operator()(neinode&amp; v1,neinode&amp; v2)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

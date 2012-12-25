@@ -56,7 +56,6 @@ void Chip::render(){
 Chip::Chip(Widget * pa,vec2 p,vec2 s,bool vis):Widget(pa,p,s,vis),chargeCount(1){
     pg = new ProgressBar((Widget*)this,p+vec2(10,dimension.size.y-50),vec2(dimension.size.x-20,32),true);
     generateRate = s.x*s.y/10000;
-    //pg->setSize(vec2(dimension.size.x,32));
 }
 
 void Chip::update(double dt){
@@ -69,9 +68,19 @@ void Chip::sendCurrent(Chip *c){
     }
 }
 
+void Chip::addWire(Wire *w, Chip *c){
+    wires[c] = w;
+    
+}
+
+
+void Wire::setSegments(vector<vec2> seg){
+    segments = seg;
+}
+
 void Wire::update(double dt){
     
-    for (int i=0; i<currents.size(); i++) {
+    for (unsigned int i=0; i<currents.size(); i++) {
         currents[i]->update(dt);
     }
 }
@@ -86,7 +95,7 @@ void Wire::killCurrent(Current *c){
 
 
 void Wire::render(){
-    for (int i=1; i<segments.size(); i++) {
+    for (unsigned int i=1; i<segments.size(); i++) {
         vec2 a,b;
         a = segments[i];
         b=segments[i-1];
@@ -95,7 +104,7 @@ void Wire::render(){
                                                  a.angleWith(b),vec2(((b-a).Length()+2)/32,1),
                                                  vec2(0, 8.0) );
     }
-    for (int i=0; i<currents.size(); i++) {
+    for (unsigned int i=0; i<currents.size(); i++) {
         currents[i]->render();
     }
 }
@@ -111,7 +120,7 @@ void Wire::sendCurrent(double speed, Chip *source, Chip *target, CurrentCallback
 }
 
 Wire::~Wire(){
-    for (int i=0; i<currents.size(); i++) {
+    for (unsigned int i=0; i<currents.size(); i++) {
         delete currents[i];
     }
 }

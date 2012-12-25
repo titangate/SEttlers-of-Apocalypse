@@ -4,53 +4,54 @@
 
 #include <math.h>
 #include <string>
-class vec2
+template <class T>
+class vec2_t
 {
 public:
-    float   x, y;
+    T   x, y;
     
-    vec2()
+    vec2_t()
     : x(0.0f), y(0.0f)
     {
     }
-    vec2(double a,double b)
+    vec2_t(double a,double b)
     : x(a), y(b)
     {
     }
-    vec2(const vec2 &v)
+    vec2_t(const vec2_t &v)
     : x(v.x), y(v.y)
     {
     }
     
-    inline  vec2        operator    -   () const
+    inline  vec2_t        operator    -   () const
     {
-        return vec2(-x, -y);
+        return vec2_t(-x, -y);
     }
-    inline  vec2    &   operator    =   (const vec2 &v)
+    inline  vec2_t    &   operator    =   (const vec2_t &v)
     {
         x = v.x;
         y = v.y;
         return *this;
     }
-    inline  vec2    &   operator    +=  (const vec2 &v)
+    inline  vec2_t    &   operator    +=  (const vec2_t &v)
     {
         x += v.x;
         y += v.y;
         return *this;
     }
-    inline  vec2    &   operator    -=  (const vec2 &v)
+    inline  vec2_t    &   operator    -=  (const vec2_t &v)
     {
         x -= v.x;
         y -= v.y;
         return *this;
     }
-    inline  vec2    &   operator    *=  (float scalar)
+    inline  vec2_t    &   operator    *=  (T scalar)
     {
         x *= scalar;
         y *= scalar;
         return *this;
     }
-    inline  vec2    &   operator    /=  (float scalar)
+    inline  vec2_t    &   operator    /=  (T scalar)
     {
         x /= scalar;
         y /= scalar;
@@ -64,84 +65,103 @@ public:
     {
         return sqrt(x) + sqrt(y);
     }
-    inline  vec2    &   Normalize       ()
+    inline  vec2_t    &   Normalize       ()
     {
         float length = this->Length();
         x /= length;
         y /= length;
         return *this;
     }
-    inline  vec2        GetNormalize    () const
+    inline  vec2_t        GetNormalize    () const
     {
-        vec2 res(*this);
+        vec2_t res(*this);
         res /= this->Length();
         return res;
     }
-    inline  vec2    &   ToNull          ()
+    inline  vec2_t    &   ToNull          ()
     {
         x = 0.0f;
         y = 0.0f;
         return *this;
     }
-    inline  vec2        Left            () const
+    inline  vec2_t        Left            () const
     {
-        return vec2(y, -x);
+        return vec2_t(y, -x);
     }
-    inline  vec2        Right           () const
+    inline  vec2_t        Right           () const
     {
-        return vec2(-y, x);
+        return vec2_t(-y, x);
     }
-    inline  vec2    &   Invert          ()
+    inline  vec2_t    &   Invert          ()
     {
         x = -x;
         y = -y;
         return *this;
     }
-    inline double angleWith(const vec2 &b){
+    inline double angleWith(const vec2_t &b){
         return atan2(b.y-this->y, b.x-this->x);
     }
-};
+    inline  vec2_t        operator    +   ( const vec2_t &v2)
+    {
+        return vec2_t(this->x + v2.x, this->y + v2.y);
+    }
+    
+    inline  vec2_t        operator    -   (const vec2_t &v2)
+    {
+        return vec2_t(this->x - v2.x, this->y - v2.y);
+    }
+    
+    inline  vec2_t        operator    *   (T scalar)
+    {
+        return vec2_t(this->x * scalar, this->y * scalar);
+    }
+   
+    inline  vec2_t        operator    *   (const vec2_t &v2)
+    {
+        return vec2_t(this->x * v2.x, this->y * v2.y);
+    }
+    inline  vec2_t        operator    /   (T scalar)
+    {
+        return vec2_t(this->x / scalar, this->y / scalar);
+    }
+    
+    inline  vec2_t        operator    /   (const vec2_t &v2)
+    {
+        return vec2_t(this->x / v2.x, this->y / v2.y);
+    }
+    inline  float       operator    &   (const vec2_t &v2)
+    {
+        return this->x * v2.x + this->y * v2.y;
+    }
+    inline  float       operator    ^   (const vec2_t &v2)
+    {
+        return this->x * v2.y - this->y * v2.x;
+    }
+    inline bool operator == (const vec2_t &v2)const{
+        return this->x==v2.x && this->y==v2.y;
+    }
+    
+    inline bool operator < (const vec2_t &v2)const{
+        return this->x<v2.x ||(this->x==v2.x && this->y<v2.y);
+    }
 
-inline  vec2        operator    +   (const vec2 &v1, const vec2 &v2)
-{
-    return vec2(v1.x + v2.x, v1.y + v2.y);
-}
-inline  vec2        operator    -   (const vec2 &v1, const vec2 &v2)
-{
-    return vec2(v1.x - v2.x, v1.y - v2.y);
-}
-inline  vec2        operator    *   (const vec2 &v, float scalar)
-{
-    return vec2(v.x * scalar, v.y * scalar);
-}
-inline  vec2        operator    *   (float scalar, const vec2 &v)
-{
-    return vec2(scalar * v.x, scalar * v.y);
-}
-inline  vec2        operator    *   (const vec2 &v1, const vec2 &v2)
-{
-    return vec2(v1.x * v2.x, v1.y * v2.y);
-}
-inline  vec2        operator    /   (const vec2 &v, float scalar)
-{
-    return vec2(v.x / scalar, v.y / scalar);
-}
-inline  vec2        operator    /   (float scalar, const vec2 &v)
-{
-    return vec2(scalar / v.x, scalar / v.y);
-}
-inline  vec2        operator    /   (const vec2 &v1, const vec2 &v2)
-{
-    return vec2(v1.x / v2.x, v1.y / v2.y);
-}
-inline  float       operator    &   (const vec2 &v1, const vec2 &v2)
-{
-    return v1.x * v2.x + v1.y * v2.y;
-}
-inline  float       operator    ^   (const vec2 &v1, const vec2 &v2)
-{
-    return v1.x * v2.y - v1.y * v2.x;
-}
+};
+template <class T>
+ inline  vec2_t<T>        operator    *   (T scalar,const vec2_t<T>& v)
+ {
+ return vec2_t<T>(scalar * v.x, scalar * v.y);
+ }
+
+template <class T>
+ inline  vec2_t<T>        operator    /   (T scalar,const vec2_t<T>& v)
+ {
+ return vec2_t<T>(scalar / v.x, scalar / v.y);
+ }
+ 
+ 
+
+
+typedef vec2_t<double> vec2;
 
 class quad{
 public:

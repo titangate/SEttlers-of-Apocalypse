@@ -30,8 +30,8 @@ public:
 
 class ParticleSystem {
     deque<Particle> particles;
-    int count;
-    int max_count;
+    unsigned int count;
+    unsigned int max_count;
     bool started;
     int emissionrate;
     double particlelife;

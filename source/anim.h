@@ -46,7 +46,7 @@ public:
         anims.push_back(Animation<T>(_setter,w,start,finish,time,style));
     }
     void update(double dt){
-        for (int i=0; i<anims.size(); i++) {
+        for (unsigned int i=0; i<anims.size(); i++) {
             anims[i].update(dt);
         }
     }

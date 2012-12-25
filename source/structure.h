@@ -30,13 +30,12 @@ public:
     Chip(Widget * pa,vec2 p,vec2 s,bool vis = true);
     virtual ~Chip(){delete pg;}
     virtual void changeOwner(Player * p){}
-    virtual void addWire(Wire *w,Chip* c){
-        wires[c] = w;
-    }
+    virtual void addWire(Wire *w,Chip* c);
     virtual void receiveCharge(int c){
         chargeCount += c;
     }
     virtual void sendCurrent(Chip *c);
+    //virtual void getWireConnectingPoint(Chip* c);
 };
 
 class Wire {
@@ -50,6 +49,7 @@ public:
     Wire(vector<vec2> seg,Chip*s, Chip*t):segments(seg),source(s),target(t){
     }
     ~Wire();
+    void setSegments(vector<vec2>seg);
     void update(double dt);
     void render();
     void sendCurrent(double speed,Chip* source,Chip *target,CurrentCallback cb);
@@ -58,7 +58,7 @@ public:
 
 class Current {
     Wire * wire;
-    int currentSeg;
+    unsigned int currentSeg;
     double currentSpeed;
     bool reverse;
     double distanceOnSeg;

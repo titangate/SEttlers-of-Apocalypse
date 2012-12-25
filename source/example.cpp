@@ -45,7 +45,7 @@ void ParticleSystem::emit(){
 void ParticleSystem::render(){
     //printf("%d\n",particles.size());
     //for (deque<Particle>::iterator i=particles.begin(); i!=particles.end(); i++) {
-    for (int i=0;i<particles.size();i++){
+    for (unsigned int i=0;i<particles.size();i++){
         double scale = deltasize.y-(deltasize.y-deltasize.x)*particles[i].life/particlelife;
         ExampleRenderer::getInstance().drawImage(image, particles[i].pos, 0,vec2(scale,scale),origin);
     }
