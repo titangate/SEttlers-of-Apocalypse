@@ -10,10 +10,10 @@ using namespace std;
 class Chip;
 class Player {
     vector<Chip*> chips;
-    uint8 r,g,b,a;
-    
 public:
     
+    uint8 r,g,b;
+    Player():r(125),g(80),b(250){}
 };
 
 #endif

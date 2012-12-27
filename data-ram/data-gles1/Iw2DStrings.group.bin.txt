@@ -4,11 +4,11 @@ ResGroupResources:
 		Size: 18533
 	CIwGxFont (0xa68776be)
 		"24" (0x5970eb)
-		Size: 38601
+		Size: 82745
 	CIwGxFont (0xa68776be)
 		"48" (0x597131)
-		Size: 165781
-	ResList 'CIwGxFont' pos:42 size:222925
+		Size: 118001
+	ResList 'CIwGxFont' pos:42 size:219289
 
-ResGroupResources: Wrote 222929 bytes to CIwResGroup "Iw2DStrings"
+ResGroupResources: Wrote 219293 bytes to CIwResGroup "Iw2DStrings"
 

@@ -57,20 +57,31 @@ ExampleRenderer::ExampleRenderer()
     //IwGxInit();
     //Iw2DInit();
     _matrixStack.push(CIwMat2D::g_Identity);
-};
+    
+}
 
 void ExampleRenderer::render(){
     
     IwGxClear(IW_GX_COLOUR_BUFFER_F | IW_GX_DEPTH_BUFFER_F);
-};
+}
 
 void ExampleRenderer::setFont(const string& s){
     Iw2DSetFont(getFont(s));
 }
 
+void ExampleRenderer::setFont(CIw2DFont* f){
+    Iw2DSetFont(f);
+}
+
+CIw2DFont * ExampleRenderer::getCurrentFont(){
+    return Iw2DGetFont();
+}
+
 CIw2DImage * ExampleRenderer::getImage(const string& s){
-    if (_images.find(s)==_images.end())
+    if (_images.find(s)==_images.end()){
         _images[s] = Iw2DCreateImage(s.c_str());
+        
+    }
     return _images[s];
 };
 
@@ -108,7 +119,7 @@ void ExampleRenderer::drawImage(CIw2DImage * image,vec2 pos,double angle,vec2 sc
 
 void ExampleRenderer::drawImageQ(CIw2DImage * image,quad q,vec2 pos,double angle,vec2 scale,vec2 origin){
     
-    CIwMat2D m;
+    /*CIwMat2D m;
     CIwSVec2 centre = CIwSVec2(pos.x,pos.y);
     
     m.SetRot(IW_FIXED(angle/(M_PI*2)));
@@ -127,8 +138,21 @@ void ExampleRenderer::drawImageQ(CIw2DImage * image,quad q,vec2 pos,double angle
                   CIwSVec2(q.pos.x,q.pos.y),
                   CIwSVec2(q.size.x,q.size.y)
                         );
-    Iw2DSetTransformMatrix(_matrixStack.top());
+    Iw2DSetTransformMatrix(_matrixStack.top());*/
     //pop();
+    
+    CIwMat2D m(1);
+    CIwSVec2 centre = CIwSVec2(pos.x,pos.y);
+    
+    m.SetRot(IW_FIXED(angle/(M_PI*2)));
+    m.SetTrans(centre);
+    m = m*_matrixStack.top();
+    Iw2DSetTransformMatrix(m);
+    Iw2DDrawImageRegion(image,CIwSVec2(-origin.x*scale.x,-origin.y*scale.y),
+                        CIwSVec2(q.size.x*scale.x,q.size.y*scale.y),
+                        CIwSVec2(q.pos.x,q.pos.y),
+                        CIwSVec2(q.size.x,q.size.y));
+    Iw2DSetTransformMatrix(_matrixStack.top());
 };
 
 

@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include <string>
+#include <sstream>
 class vec2
 {
 public:

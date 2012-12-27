@@ -32,12 +32,13 @@ public:
     virtual void setY(double y);
     virtual void setSize(vec2);
     virtual void setVisible(bool vis);
+    virtual bool isVisible(){return visibility;}
     virtual void addChild(Widget * child);
     virtual void removeFromParent();
     virtual void clearChildren();
     virtual bool hovered(vec2 p);
     virtual vec2 getCentre();
-    virtual void setValue(const std::string& s,double v){
+    /*virtual void setValue(const std::string& s,double v){
         static std::map<std::string,setter> _t;
         if (_t.empty()) {
             _t["x"] = &Widget::setX;
@@ -46,7 +47,7 @@ public:
         if (_t.find(s)!=_t.end()) {
             (this->*_t[s])(v);
         }
-    }
+    }*/
     Widget(Widget * pa,vec2 p,vec2 s,bool vis = true):parent(pa),visibility(vis){
         setPosition(p);
         setSize(s);

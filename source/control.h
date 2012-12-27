@@ -13,6 +13,7 @@ public:
     virtual void pointerMotion( double x, double y, int id){}
 };
 
+
 struct CTouch
 {
     int32 x; // position x

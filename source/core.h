@@ -4,6 +4,8 @@
 
 #include <math.h>
 #include <string>
+#include <sstream>
+
 template <class T>
 class vec2_t
 {
@@ -14,7 +16,7 @@ public:
     : x(0.0f), y(0.0f)
     {
     }
-    vec2_t(double a,double b)
+    vec2_t(T a,T b)
     : x(a), y(b)
     {
     }
@@ -98,7 +100,7 @@ public:
         y = -y;
         return *this;
     }
-    inline double angleWith(const vec2_t &b){
+    inline float angleWith(const vec2_t &b){
         return atan2(b.y-this->y, b.x-this->x);
     }
     inline  vec2_t        operator    +   ( const vec2_t &v2)
@@ -116,24 +118,24 @@ public:
         return vec2_t(this->x * scalar, this->y * scalar);
     }
    
-    inline  vec2_t        operator    *   (const vec2_t &v2)
+    inline  vec2_t        operator    *   (const vec2_t &v2) const
     {
         return vec2_t(this->x * v2.x, this->y * v2.y);
     }
-    inline  vec2_t        operator    /   (T scalar)
+    inline  vec2_t        operator    /   (T scalar) const
     {
         return vec2_t(this->x / scalar, this->y / scalar);
     }
     
-    inline  vec2_t        operator    /   (const vec2_t &v2)
+    inline  vec2_t        operator    /   (const vec2_t &v2) const
     {
         return vec2_t(this->x / v2.x, this->y / v2.y);
     }
-    inline  float       operator    &   (const vec2_t &v2)
+    inline  float       operator    &   (const vec2_t &v2) const
     {
         return this->x * v2.x + this->y * v2.y;
     }
-    inline  float       operator    ^   (const vec2_t &v2)
+    inline  float       operator    ^   (const vec2_t &v2) const
     {
         return this->x * v2.y - this->y * v2.x;
     }
@@ -159,9 +161,16 @@ template <class T>
  }
  
  
+template <class T>
+inline std::string toString(T n)
+{
+    std::stringstream ss;//create a stringstream
+    ss << n;//add number to the stream
+    return ss.str();//return a string with the contents of the stream
+}
 
-
-typedef vec2_t<double> vec2;
+        
+typedef vec2_t<float> vec2;
 
 class quad{
 public:

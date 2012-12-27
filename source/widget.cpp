@@ -1,18 +1,21 @@
 #include "widget.h"
+#include <algorithm>
 Control &c = Control::getInstance();
 void Widget::pointerPressed(vec2 p, s3ePointerButton key,int id){
-    for(widgetlist::iterator i = parent->children.begin(); i != parent->children.end(); i++){
-        if((*i)->hovered(p)){
+    for(widgetlist::reverse_iterator i = children.rbegin(); i != children.rend(); i++){
+        if((*i)->visibility && (*i)->hovered(p)){
             (*i)->pointerPressed(p,key,id);
+            return;
         } else {
             //do stuffs
         }
     }
 }
 void Widget::pointerReleased(vec2 p, s3ePointerButton key,int id){
-    for(widgetlist::iterator i = parent->children.begin(); i != parent->children.end(); i++){
-        if((*i)->hovered(p)){
+    for(widgetlist::reverse_iterator i = children.rbegin(); i != children.rend(); i++){
+        if((*i)->visibility && (*i)->hovered(p)){
             (*i)->pointerReleased(p,key,id);
+            return;
         } else {
             //do stuffs
         }
@@ -53,10 +56,14 @@ vec2 Widget::getCentre(){
 vec2 Widget::getSize(){return dimension.size;}
 void Widget::setSize(vec2 s){dimension.size = s;}
 void Widget::setVisible(bool vis){
-    vis = visibility;
+    visibility = vis;
 }
 void Widget::addChild(Widget * child){
-    children.push_back(child);
+    if (std::find(children.begin(),children.end(),child)==children.end()) {
+        children.push_back(child);
+        child->parent = this;
+    }
+    
 }
 void Widget::removeFromParent(){
     for (widgetlist::iterator i = parent->children.begin(); i<parent->children.end(); i++) {

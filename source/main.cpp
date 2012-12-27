@@ -10,6 +10,22 @@
 
 #include <vector>
 
+class widgetControl: public controlDelegate {
+    
+    
+public:
+    Widget * base;
+    virtual void pointerPressed (double x,double y, s3ePointerButton key,int id){
+        base->pointerPressed(vec2(x,y), key, id);
+    }
+    virtual void pointerReleased (double x,double y, s3ePointerButton key,int id){
+        base->pointerReleased(vec2(x,y), key, id);
+    }
+    virtual void pointerMotion( double x, double y, int id){
+    }
+    widgetControl(Widget * w):base(w){}
+};
+
 CIw2DFont *g_Font;
 int main()
 {
@@ -19,7 +35,7 @@ int main()
     Iw2DInit();
 
     // Set the default background clear colour
-    IwGxSetColClear(0x00, 0x00, 0x00, 0);
+    IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
     
     
     IwResManagerInit();
@@ -33,11 +49,9 @@ int main()
     uint32 sw = IwGxGetScreenWidth(); // returns 176
     uint32 sh = IwGxGetScreenHeight();
     Widget * base = new Widget(0,vec2(0,0),vec2(sw,sh));
-    Panel * p = new Panel(base,vec2(50,50),vec2(256,256));
+    Control::getInstance().registerDelegate(new widgetControl(base));
     Game * g = new Game();
     g->initDemo(base);
-    p->generateButton("button1");
-    p->generateButton("button2");
         //Button * b = new Button(p,vec2(100,100),vec2(200,50)); b->setText("adsfasdf");
    
     // Initialise Marmalade graphics system and Iw2D module
@@ -69,11 +83,13 @@ int main()
         
         // Update the game
         Anim<Panel>::getInstance().update(delta);
-        //printf("%.2f",delta);
+        Anim<Current>::getInstance().update(delta);
+        Anim<Chip>::getInstance().update(delta);
+        Anim<Wire>::getInstance().update(delta);
         base->update(delta);
         g->update(delta);
-        base->render();
         g->render();
+        base->render();
         // Show the surface
         Iw2DSurfaceShow();
         

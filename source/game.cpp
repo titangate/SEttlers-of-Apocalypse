@@ -3,7 +3,8 @@
 #include <algorithm>
 #include <list>
 #include <queue>
-
+#include "panel.h"
+#include "scribbler.h"
 
 typedef std::vector<Chip*> cp;
 typedef std::vector<Wire*> wp;
@@ -200,10 +201,35 @@ void Game::constructCircuits(){
         g[path[0].x][path[0].y] = (Widget*)1;
         g[path[path.size()-1].x][path[path.size()-1].y] = (Widget*)1;
         for (unsigned int i=0; i<path.size(); i++) {
-            seg.push_back(vec2((path[i].x)*division,(path[i].y)*division));
+            seg.push_back(vec2((path[i].x+.5)*division,(path[i].y+.5)*division));
         }
         wire->setSegments(seg);
     }
+}
+void Game::popWheel(Chip * w){
+    const vec2 s(50,50);
+    p->setVisible(true);
+    p->clearWheel();
+    vector<Widget*> buttons = w->getWheelWidgets();
+    p->pop();
+    double b = MIN(w->getSize().x,w->getSize().y);
+    p->setSize(vec2(b,b)+s);
+    p->setPosition(w->getPosition()-s/2.0);
+    
+    for (vector<Widget*>::iterator i=buttons.begin(); i!=buttons.end(); i++) {
+        p->addWheelWidget(*i);
+    }
+    highlight = w;
+}
+
+void Game::releaseWheel(){
+    p->release();   
+    highlight = NULL;
+}
+
+
+Chip* Game::getSelectedChip(){
+    return highlight;
 }
 
 void Game::initDemo(Widget * base){
@@ -214,17 +240,27 @@ void Game::initDemo(Widget * base){
     s.push_back(vec2(50,200));
     s.push_back(vec2(200,200));
     
-    Chip* c1 = new Chip(base,vec2(100,100),vec2(150,150));
-    Chip* c2 = new Chip(base,vec2(300,200),vec2(150,150));
+    Chip* c1 = new Chip(base,vec2(100,100),vec2(300,150));
+    Chip* c2 = new Chip(base,vec2(800,200),vec2(150,150));
+    Player *n = new Player();
     
+    c1->changeOwner(n);
+    c1->game = this;
+    c2->game = this;
     w.push_back(new Wire(s,c1,c2));
-    w.push_back(new Wire(s,c2,c1));
     w.push_back(new Wire(s,c2,c1));
     c.push_back(c1);
     c.push_back(c2);
     c1->addWire(w[0],c2);
-    c1->addWire(w[1],c2);
-    c1->addWire(w[2],c2);
+    c2->addWire(w[1],c1);
     constructCircuits();
     c1->sendCurrent(c2);
+    
+    // selection wheel
+    
+    p = new Panel(base,vec2(50,50),vec2(256,256));
+    p->setVisible(false);
+    
+    AttPanel * ap = new AttPanel(base,vec2(0,300),vec2(200,100));
+    ap->initDemo();
 }

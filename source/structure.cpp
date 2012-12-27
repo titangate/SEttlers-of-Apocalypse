@@ -2,9 +2,22 @@
 #include "example.h"
 #include <map>
 #include <sstream>
+#include "anim.h"
+#include "game.h"
+#include "button.h"
 
 void simpleCurrentCallback(Current* current, Chip* sourcechip, Chip*targetchip, Wire* wire){
-    targetchip->receiveCharge(10);
+    //targetchip->receiveCharge(current->getCharges());
+    if (targetchip->getOwner() == current->getOwner()) {
+        targetchip->chargeCount += current->getCharges();
+    }
+    else if (targetchip->chargeCount > current->getCharges()){
+        targetchip->chargeCount -= current->getCharges();
+    }
+    else {
+        targetchip->changeOwner(current->getOwner());
+        targetchip->chargeCount = current->getCharges()-targetchip->chargeCount;
+    }
 }
 
 quad getQuad(const string& name){
@@ -26,7 +39,13 @@ quad getQuad(const string& name){
 }
 
 void Chip::render(){
-    ExampleRenderer::getInstance().setColor(48, 192, 23, 128);
+    if (dt) {
+        ExampleRenderer::getInstance().setColor(r, g, b, 255);
+    }
+    else{
+        ExampleRenderer::getInstance().setColor(r, g, b, 255);
+    }
+    
     ExampleRenderer::getInstance().drawImageQ("standardbg.png", getQuad("topleft"), vec2(dimension.pos.x-10,dimension.pos.y-10),0);
     ExampleRenderer::getInstance().drawImageQ("standardbg.png", getQuad("topright"), vec2(dimension.pos.x+dimension.size.x,dimension.pos.y-10),0);
     
@@ -48,18 +67,95 @@ void Chip::render(){
     ExampleRenderer::getInstance().setFont("48");
     ExampleRenderer::getInstance().printf(s.str(), dimension.pos,IW_2D_FONT_ALIGN_CENTRE,IW_2D_FONT_ALIGN_CENTRE,dimension.size);
     ExampleRenderer::getInstance().setFont("arial14");
+    if (generateRate) {
+        s.str("");
+        s << (int)generateRate;
+        ExampleRenderer::getInstance().printf(s.str(), dimension.pos);
+    }
     ExampleRenderer::getInstance().resetColor();
+    if (dt) {
+        
+        ExampleRenderer::getInstance().setColor(255, 255, 255, 255);
+        ExampleRenderer::getInstance().drawImage("button_glow.png", dimension.pos+vec2(dt*50,-8), 0,vec2(1,1),vec2(64,16));
+        ExampleRenderer::getInstance().drawImage("button_glow.png", dimension.pos+vec2(dt*25+dimension.size.x/2,-8), 0,vec2(1,2),vec2(64,16));
+        ExampleRenderer::getInstance().drawImage("button_glow.png", dimension.pos +vec2(dt*(-50)+dimension.size.x+16,dimension.size.y), 0,vec2(1,1),vec2(64,16));
+    }
     Widget::render();
 }
 
-
-Chip::Chip(Widget * pa,vec2 p,vec2 s,bool vis):Widget(pa,p,s,vis),chargeCount(1){
-    pg = new ProgressBar((Widget*)this,p+vec2(10,dimension.size.y-50),vec2(dimension.size.x-20,32),true);
-    generateRate = s.x*s.y/10000;
+void Chip::changeOwner(Player * p){
+    double nr,nb,ng;
+    if (p) {
+        nr = p->r;
+        ng = p->g;
+        nb = p->b;
+    }
+    else{
+        nr = 0;
+        nb = 0;
+        ng = 0;
+    }
+    Anim<Chip>::getInstance().animate(this, &Chip::setR, r, nr, 1);
+    Anim<Chip>::getInstance().animate(this, &Chip::setG, g, ng, 1);
+    Anim<Chip>::getInstance().animate(this, &Chip::setB, b, nb, 1);
+    owner = p;
+    for (map<Chip*, Wire*>::iterator i=wires.begin();i!=wires.end(); i++) {
+        if (i->first->owner == owner) {
+            i->second->changeOwner(owner);
+            i->first->boostWire();
+        }
+        else{
+            i->second->changeOwner(0);
+        }
+    }
 }
 
-void Chip::update(double dt){
-    chargeCount += dt*generateRate;
+void Chip::boostWire(){
+    for (map<Chip*, Wire*>::iterator i=wires.begin();i!=wires.end(); i++) {
+        if (i->first->owner == owner) {
+            i->second->changeOwner(owner);
+        }
+        else{
+            i->second->changeOwner(0);
+        }
+    }
+}
+
+Chip::Chip(Widget * pa,vec2 p,vec2 s,bool vis):Widget(pa,p,s,vis),chargeCount(1),
+    r(0),g(0),b(0),owner(0),highlighted(0){
+    pg = new ProgressBar((Widget*)this,p+vec2(5,dimension.size.y-30),vec2(dimension.size.x-10,32),true);
+    generateRate = s.x*s.y/10000;
+    upgrades.push_back(new GenerationUpgrade(this));
+}
+
+Chip::~Chip(){
+    delete pg;
+    for(vector<Upgrade*>::iterator i=upgrades.begin(); i!=upgrades.end(); i++){
+        delete (*i);
+    }
+}
+
+void Chip::update(double t){
+    chargeCount += t*generateRate;
+    if (Control::getInstance().getPointer(0)->active &&
+        hovered(vec2(Control::getInstance().getPointer(0)->x,
+                     Control::getInstance().getPointer(0)->y))){
+        dt+= t;
+        Chip* c = game->getSelectedChip();
+        if (c) {
+            if (c->wires.find(this)!=c->wires.end()) {
+                c->wires[this]->dt += t*50;
+                highlighted = c->wires[this];
+            };
+        }
+    }
+    else{
+        dt = 0;
+        if (highlighted) {
+            highlighted->dt = 0;
+            highlighted = 0;
+        }
+    }
 }
 
 void Chip::sendCurrent(Chip *c){
@@ -68,11 +164,52 @@ void Chip::sendCurrent(Chip *c){
     }
 }
 
-void Chip::addWire(Wire *w, Chip *c){
-    wires[c] = w;
-    
+void Chip::pointerPressed(vec2 p, s3ePointerButton key,int id){
+    Widget::pointerPressed(p,key,id);
+    game->popWheel(this);
 }
 
+
+void Chip::pointerReleased(vec2 p, s3ePointerButton key,int id){
+    Widget::pointerReleased(p,key,id);
+    Chip* c = game->getSelectedChip();
+    if (c) {
+        c->sendCurrent(this);
+    }
+    //game->releaseWheel();
+}
+
+void Chip::addWire(Wire *w, Chip *c){
+    wires[c] = w;
+    w->game = game;
+}
+
+struct upgradeC {
+    Chip* c;
+    Upgrade *u;
+    upgradeC(Chip* chip,Upgrade *up):c(chip),u(up){}
+};
+
+void UpgradeCB(const Widget *w, const Event){
+    Button * b = (Button*) w;
+    struct upgradeC * c = (struct upgradeC*) b->userdata;
+    if (c->u->upgradable(c->u->getLevel()+1)) {
+        c->u->applyUpgrade(c->u->getLevel()+1);
+    }
+}
+
+vector<Widget*> Chip::getWheelWidgets(){
+    vector<Widget*> l;
+    for (vector<Upgrade*>::iterator i=upgrades.begin(); i!=upgrades.end(); i++) {
+        Button* b = new Button(0,vec2(0,0),vec2(80,40));
+        b->setText("a test");
+        l.push_back(b);
+        b->userdata = (void*) new struct upgradeC(this,*i);
+        b->registerEvent("click", &UpgradeCB);
+        b->setImage((*i)->getIcon());
+    }
+    return l;
+}
 
 void Wire::setSegments(vector<vec2> seg){
     segments = seg;
@@ -95,18 +232,36 @@ void Wire::killCurrent(Current *c){
 
 
 void Wire::render(){
+    ExampleRenderer::getInstance().setColor(r, g, b, 0xff);
     for (unsigned int i=1; i<segments.size(); i++) {
         vec2 a,b;
         a = segments[i];
         b=segments[i-1];
-        ExampleRenderer::getInstance().drawImage("gradient.png",
-                                                 segments[i],
-                                                 a.angleWith(b),vec2(((b-a).Length()+2)/32,1),
-                                                 vec2(0, 8.0) );
+        if (dt) {
+            ExampleRenderer::getInstance().drawImageQ("gradientarrow.png",
+                                                      quad(vec2(dt,0), vec2((b-a).Length()+2,16)),
+                                                      segments[i],
+                                                      a.angleWith(b),vec2(1,1),
+                                                      vec2(0, 8.0) );
+        }
+        else{
+            ExampleRenderer::getInstance().drawImageQ("gradient.png",
+                                                      quad(vec2(0,0), vec2((b-a).Length()+2,16)),
+                                                      segments[i],
+                                                      a.angleWith(b),vec2(1,1),
+                                                      vec2(0, 8.0) );
+        }
+        
+//        ExampleRenderer::getInstance().drawImageQ("gradient.png",
+//                                                  quad(vec2(0,0), vec2((b-a).Length()+2),16),
+//                                                  segments[i],
+//                                                  a.angleWith(b),vec2(((b-a).Length()+2)/32,1),
+//                                                  vec2(0, 8.0) );
     }
     for (unsigned int i=0; i<currents.size(); i++) {
         currents[i]->render();
     }
+    ExampleRenderer::getInstance().resetColor();
 }
 
 void Wire::sendCurrent(double speed, Chip *source, Chip *target, CurrentCallback cb){
@@ -114,9 +269,33 @@ void Wire::sendCurrent(double speed, Chip *source, Chip *target, CurrentCallback
     if (source == this->target) {
         reverse = true;
     }
-    Current* c = new Current(this,1,speed,reverse,cb);
+    
+    unsigned int charges = (source->chargeCount/2);
+    source->chargeCount -= charges;
+    Current* c = new Current(this,1,speed,reverse,cb,charges);
+    c->changeOwner(source->getOwner());
+    c->game = game;
     currents.push_back(c);
     
+}
+
+
+void Wire::changeOwner(Player * p){
+    double nr,nb,ng;
+    if (p) {
+        nr = p->r;
+        ng = p->g;
+        nb = p->b;
+    }
+    else{
+        nr = 0;
+        nb = 0;
+        ng = 0;
+    }
+    Anim<Wire>::getInstance().animate(this, &Wire::setR, r, nr, 1);
+    Anim<Wire>::getInstance().animate(this, &Wire::setG, g, ng, 1);
+    Anim<Wire>::getInstance().animate(this, &Wire::setB, b, nb, 1);
+    owner = p;
 }
 
 Wire::~Wire(){
@@ -147,7 +326,7 @@ void Current::update(double dt){
     //if (currentSeg==0) b=wire->segments[wire->segments.size()-1];
     b=wire->segments[currentSeg-1];
     double l = (b-a).Length();
-    pos = b + distanceOnSeg/l*(a-b);
+    pos = b + (float)(distanceOnSeg/l)*(a-b);
     p->setPosition(pos);
     p->update(dt);
     if (l<distanceOnSeg) {
@@ -157,5 +336,26 @@ void Current::update(double dt){
 }
 
 void Current::render(){
+    ExampleRenderer::getInstance().setColor(r, g, b, 255);
+    p->setSizes(vec2(MAX(MIN(2,charges/40.0),.5),0));
     p->render();
+    ExampleRenderer::getInstance().resetColor();
+}
+
+void Current::changeOwner(Player * p){
+    double nr,nb,ng;
+    if (p) {
+        nr = p->r;
+        ng = p->g;
+        nb = p->b;
+    }
+    else{
+        nr = 0;
+        nb = 0;
+        ng = 0;
+    }
+    Anim<Current>::getInstance().animate(this, &Current::setR, r, nr, 1);
+    Anim<Current>::getInstance().animate(this, &Current::setG, g, ng, 1);
+    Anim<Current>::getInstance().animate(this, &Current::setB, b, nb, 1);
+    owner = p;
 }

@@ -3,12 +3,16 @@
 #include "widget.h"
 #include <string>
 #include <vector>
+
+template <class T>
+class Anim;
 using namespace std;
 
 typedef double (*STYLEFUNC)(double time_e,double start,double interval,double time) ;
 extern map<string, STYLEFUNC> stylefs;
 double linear(double t,double b, double c, double d);
 double quadIn(double t,double b, double c, double d);
+double quadOut(double t,double b, double c, double d);
 template <class T>
 class Animation{
 public:
@@ -24,18 +28,28 @@ public:
     setter(_setter),obj(_obj),
         start(_start),finish(_finish),time(_time),style(_style),current(_start),time_eplapsed(0)
     {}
-    void update (double dt){
+    bool update (double dt){
         time_eplapsed+=dt;
         if (time_eplapsed < time) {
             current = (*stylefs[style])(time_eplapsed,start,finish-start,time);
             (obj->*setter)(current);
         }
+        else{
+            (obj->*setter)(finish);
+            //vector < Animation<T> > & anim = Anim<T>::getInstance().anims;
+            return true;
+            //anim.erase(find(anim.begin(), anim.end(), *this));
+        }
+        return false;
     }
     
 };
 
 template <class T>
 class Anim{
+    friend class Animation<T>;
+protected:
+    vector<Animation<T> > anims;
 public:
     static Anim & getInstance(){
         static Anim instance;
@@ -47,14 +61,15 @@ public:
     }
     void update(double dt){
         for (unsigned int i=0; i<anims.size(); i++) {
-            anims[i].update(dt);
+            if(anims[i].update(dt)) anims.erase(anims.begin()+i);
         }
     }
-protected:
-    vector<Animation<T> > anims;
+
     Anim(){
         stylefs["linear"] = &linear;
-        stylefs["quadIn"] = &quadIn;}
+        stylefs["quadIn"] = &quadIn;
+        stylefs["quadOut"] = &quadIn;
+    }
     
 };
 

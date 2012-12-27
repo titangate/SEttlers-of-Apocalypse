@@ -9,7 +9,7 @@
 #ifndef __SEofASE__example__
 #define __SEofASE__example__
 
-#include <iostream>
+//#include <iostream>
 #include <string>
 #include <map>
 #include "Iw2D.h"
@@ -50,6 +50,7 @@ public:
     void update(double dt);
     void render();
     void setPosition(vec2 p){pos = p;}
+    void setSizes(vec2 s){deltasize = s;}
     ParticleSystem(CIw2DImage* img,
                    int maxcount = 32,
                    int emis = 16,
@@ -89,6 +90,8 @@ public:
     void rotate(double angle);
     void translate(vec2 pos);
     void setFont(const string& s);
+    void setFont(CIw2DFont*);
+    CIw2DFont * getCurrentFont();
     
     // drawing primitives
     //void line(

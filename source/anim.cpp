@@ -14,3 +14,8 @@ double quadIn(double t,double b, double c, double d){
     double p = t/d;
     return c*p*p + b;
 }
+
+double quadOut(double t,double b, double c, double d){
+    double p = t/d;
+    return -c*p*(p-2) + b;
+}

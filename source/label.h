@@ -1,24 +1,22 @@
 #ifndef LABEL_H
 #define LABEL_H
 #include "widget.h"
-class Widget;
+#include "Iw2D.h"
 class Label : public Widget{
+    CIw2DImage* image;
+    std::string text;
+    vec2 imagesize;
+    CIw2DFont * font;
+    vec2 rawsize;
 public:
-    
-    virtual void pointerPressed(CTouch * c);
-    virtual void pointerReleased(CTouch * c);
-    void registerEvent(std::string event,WidgetCallback) ;
     void update(double dt) ;
     void render() ;
-    vec2 getPosition() ;
-    void setPosition(vec2) ;
-    vec2 getSize() ;
-    void setSize(vec2) ;
-    void setVisible(bool vis) ;
-    void addChild(Widget * child) ;
-    void removeFromParent();
-    void clearChildren();
-    
+    void setSize(vec2);
+    void setImage(CIw2DImage* img);
+    void setText(const std::string& s);
+    void setImageSize(vec2 s);
+    void setFont(CIw2DFont *f){font = f;setSize(rawsize);}
+    Label(Widget * pa,vec2 p,vec2 s,bool vis = true);
 };
 
 #endif
