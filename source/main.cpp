@@ -32,10 +32,11 @@ int main()
     
     // Initialise Marmalade graphics system and Iw2D module
     IwGxInit();
+    s3eSurfaceSetInt(S3E_SURFACE_DEVICE_ORIENTATION_LOCK, S3E_SURFACE_LANDSCAPE);
     Iw2DInit();
 
     // Set the default background clear colour
-    IwGxSetColClear(0xff, 0xff, 0xff, 0xff);
+    IwGxSetColClear(200, 200, 200, 0xff);
     
     
     IwResManagerInit();
@@ -48,6 +49,11 @@ int main()
     Iw2DSetFont(g_Font);
     uint32 sw = IwGxGetScreenWidth(); // returns 176
     uint32 sh = IwGxGetScreenHeight();
+    if (sh>sw) {
+        uint32 t = sw;
+        sw = sh;
+        sh = t;
+    }
     Widget * base = new Widget(0,vec2(0,0),vec2(sw,sh));
     Control::getInstance().registerDelegate(new widgetControl(base));
     Game * g = new Game();
@@ -86,6 +92,7 @@ int main()
         Anim<Current>::getInstance().update(delta);
         Anim<Chip>::getInstance().update(delta);
         Anim<Wire>::getInstance().update(delta);
+        Anim<Widget>::getInstance().update(delta);
         base->update(delta);
         g->update(delta);
         g->render();

@@ -6,17 +6,19 @@
 #include "Iw2D.h"
 void Panel::update(double t){
     Widget::update(t);
-    /*if (percentsize) {
-        setVisible(true);
+    bool vis = fabs(dt-1)<.05;
+    for (unsigned int i=0; i<children.size(); i++) {
+        children[i]->setVisible(vis);
     }
-    else setVisible(false);*/
+    
+    
 }
 void Panel::render(){
     if (!visibility) {
         return;
     }
     ExampleRenderer::getInstance().setColor(100, 100, 100, 0xff);
-    ExampleRenderer::getInstance().drawImage("wheel.png", dimension.pos+dimension.size/2,0, vec2(dt,dt),vec2(128,128));
+    ExampleRenderer::getInstance().drawImage("wheel.png", dimension.pos+dimension.size/2,0, dimension.size/vec2(256,256)*dt,vec2(128,128));
     ExampleRenderer::getInstance().resetColor();
     //percentsize = 0.0;
     if (fabs(dt-1)<.05){

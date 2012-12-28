@@ -25,6 +25,9 @@ void Widget::registerEvent(std::string event,WidgetCallback cb){
     cblist[event] = cb;
 }
 void Widget::update(double dt){
+    if (cblist.find("update")!=cblist.end()) {
+        cblist["update"](this,Event());
+    }
     for (widgetlist::iterator i = children.begin(); i!=children.end(); i++) {
         (*i)->update(dt);
     }

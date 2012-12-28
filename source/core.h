@@ -180,6 +180,12 @@ public:
         return p.x-pos.x >= 0 && p.x-pos.x <= size.x &&
         p.y-pos.y >= 0 && p.y-pos.y <= size.y;
     }
+    bool overlap(const quad& q){
+        return (q.pos.x < pos.x + size.x) &&
+            (pos.x + size.x > q.pos.x) &&
+            (pos.y < q.pos.y+q.size.y) &&
+            (pos.y + size.y > q.pos.y);
+    }
     quad():pos(0,0),size(0,0){
         
     }

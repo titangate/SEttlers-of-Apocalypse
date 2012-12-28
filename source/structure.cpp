@@ -5,14 +5,15 @@
 #include "anim.h"
 #include "game.h"
 #include "button.h"
+#include "resource.h"
+
 
 void simpleCurrentCallback(Current* current, Chip* sourcechip, Chip*targetchip, Wire* wire){
-    //targetchip->receiveCharge(current->getCharges());
     if (targetchip->getOwner() == current->getOwner()) {
         targetchip->chargeCount += current->getCharges();
     }
     else if (targetchip->chargeCount > current->getCharges()){
-        targetchip->chargeCount -= current->getCharges();
+        targetchip->chargeCount -= targetchip->getDamage(current->getCharges());
     }
     else {
         targetchip->changeOwner(current->getOwner());
@@ -122,10 +123,18 @@ void Chip::boostWire(){
 }
 
 Chip::Chip(Widget * pa,vec2 p,vec2 s,bool vis):Widget(pa,p,s,vis),chargeCount(1),
-    r(0),g(0),b(0),owner(0),highlighted(0){
+    owner(0),highlighted(0),currentUpgrade(0),fortification(0){
     pg = new ProgressBar((Widget*)this,p+vec2(5,dimension.size.y-30),vec2(dimension.size.x-10,32),true);
-    generateRate = s.x*s.y/10000;
-    upgrades.push_back(new GenerationUpgrade(this));
+        generateRate = s.x*s.y/10000;
+        upgrades.push_back(new GenerationUpgrade(this));
+        upgrades.push_back(new FortificationUpgrade(this));
+        setColor(0, 0, 0);
+}
+
+void Chip::setSize(vec2 s){
+    Widget::setSize(s);
+    pg->setPosition(dimension.pos+vec2(5,dimension.size.y-30));
+    pg->setSize(vec2(dimension.size.x-10,32));
 }
 
 Chip::~Chip(){
@@ -156,6 +165,16 @@ void Chip::update(double t){
             highlighted = 0;
         }
     }
+    if (currentUpgrade) {
+        pg->setProgress(currentUpgrade->getProgress());
+        if(currentUpgrade->update(t)){
+            currentUpgrade->applyUpgrade(currentUpgrade->getLevel()+1);
+            currentUpgrade = 0;
+        }
+    }
+    else{
+        pg->setProgress(0);
+    }
 }
 
 void Chip::sendCurrent(Chip *c){
@@ -184,6 +203,55 @@ void Chip::addWire(Wire *w, Chip *c){
     w->game = game;
 }
 
+void Chip::setCurrentUpgrade(Upgrade *u){
+    currentUpgrade = u;
+}
+
+double Chip::getDamage(double v){
+    return v*(1-fortification);
+}
+
+vector<AttSubitems> Chip::getAttSubitems(){
+    vector<AttSubitems> v;
+    v.push_back((struct AttSubitems){
+        ExampleRenderer::getInstance().getImage("button_glow.png"),
+        "Charges",
+        toString((int)chargeCount),
+        "",
+        "",
+        ATT_BASE,
+        ATT_NEUTRUAL
+    });
+    v.push_back((struct AttSubitems){
+        ExampleRenderer::getInstance().getImage("generation.png"),
+        "Generation",
+        toString((int)(generateRate*60)),
+        "",
+        "",
+        ATT_BASE,
+        ATT_NEUTRUAL
+    });
+    stringstream ss;
+    ss.setf(ios::fixed, ios::floatfield);
+    ss.precision(1);
+    ss << 100*fortification << "%";
+    v.push_back((struct AttSubitems){
+        ExampleRenderer::getInstance().getImage("fortification.png"),
+        "Fortification",
+        ss.str(),
+        "",
+        "",
+        ATT_BASE,
+        ATT_NEUTRUAL
+    });
+    vector<AttSubitems> uv;
+    if (currentUpgrade) {
+        uv = currentUpgrade->getAttSubitems(currentUpgrade->getLevel()+1);
+    }
+    v.insert( v.end(), uv.begin(), uv.end() );
+    return v;
+}
+
 struct upgradeC {
     Chip* c;
     Upgrade *u;
@@ -194,18 +262,33 @@ void UpgradeCB(const Widget *w, const Event){
     Button * b = (Button*) w;
     struct upgradeC * c = (struct upgradeC*) b->userdata;
     if (c->u->upgradable(c->u->getLevel()+1)) {
-        c->u->applyUpgrade(c->u->getLevel()+1);
+        c->c->setCurrentUpgrade(c->u);
+        c->u->applyCost(c->u->getLevel()+1);
     }
+}
+
+void HoveringCB(const Widget *w, const Event){
+    Button * b = (Button*) w;
+    struct upgradeC * c = (struct upgradeC*) b->userdata;
+    c->c->game->updateAttPanel(c->u->getAttSubitems(c->u->getLevel()+1));
+}
+
+void UpdateCB(const Widget *w,const Event){
+    Button * b = (Button*) w;
+    struct upgradeC * c = (struct upgradeC*) b->userdata;
+    b->setActive((!c->c->getCurrentUpgrade()) && c->u->upgradable(c->u->getLevel()+1));
 }
 
 vector<Widget*> Chip::getWheelWidgets(){
     vector<Widget*> l;
     for (vector<Upgrade*>::iterator i=upgrades.begin(); i!=upgrades.end(); i++) {
         Button* b = new Button(0,vec2(0,0),vec2(80,40));
-        b->setText("a test");
+        //b->setText("a test");
         l.push_back(b);
         b->userdata = (void*) new struct upgradeC(this,*i);
         b->registerEvent("click", &UpgradeCB);
+        b->registerEvent("hovering", &HoveringCB);
+        b->registerEvent("update", &UpdateCB);
         b->setImage((*i)->getIcon());
     }
     return l;

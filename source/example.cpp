@@ -80,7 +80,6 @@ CIw2DFont * ExampleRenderer::getCurrentFont(){
 CIw2DImage * ExampleRenderer::getImage(const string& s){
     if (_images.find(s)==_images.end()){
         _images[s] = Iw2DCreateImage(s.c_str());
-        
     }
     return _images[s];
 };

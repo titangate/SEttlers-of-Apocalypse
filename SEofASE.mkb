@@ -148,11 +148,15 @@ files
     capacitor.png
     chip.png
     disruptor.png
-    fort.png
+    fortification.png
     generation.png
     opamp.png
     overload.png
     pulser.png
     superconductivity.png
+
+    uparrow.png
+    downarrow.png
+    tick.png
     
 }

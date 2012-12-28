@@ -8,7 +8,9 @@ class Label : public Widget{
     vec2 imagesize;
     CIw2DFont * font;
     vec2 rawsize;
+    //uint8 r,g,b,a;
 public:
+    
     void update(double dt) ;
     void render() ;
     void setSize(vec2);

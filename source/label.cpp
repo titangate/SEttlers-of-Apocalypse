@@ -7,12 +7,14 @@ void Label::update(double dt){
 }
 void Label::render(){
     double x = 0;
+    ExampleRenderer::getInstance().setColor(r, g, b, a);
     if(image){
         ExampleRenderer::getInstance().drawImage(image, dimension.pos, 0,imagesize/vec2(image->GetWidth(),image->GetHeight()));
         x = imagesize.x;
     }
     ExampleRenderer::getInstance().setFont(font);
     ExampleRenderer::getInstance().printf(text, dimension.pos+vec2(x,0),IW_2D_FONT_ALIGN_LEFT,IW_2D_FONT_ALIGN_CENTRE,dimension.size-vec2(x,0));
+    ExampleRenderer::getInstance().resetColor();
 }
 
 void Label::setImage(CIw2DImage* img){

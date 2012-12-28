@@ -5,17 +5,22 @@
 #include <queue>
 #include "panel.h"
 #include "scribbler.h"
+#include "anim.h"
+#include "button.h"
 
 typedef std::vector<Chip*> cp;
 typedef std::vector<Wire*> wp;
 void Game::update(double dt){
-    //vec2 p = vec2(Control::getInstance().getPointer(0)->x,Control::getInstance().getPointer(0)->y);
     for (wp::iterator i=w.begin(); i!=w.end(); i++) {
         (*i)->update(dt);
-    }/*
-    for (cp::iterator i=c.begin(); i!=c.end(); i++) {
-        (*i)->update(dt);
-    }*/
+    }
+    if (highlight) {
+        const vector<AttSubitems> &v = highlight->getAttSubitems();
+        for (unsigned int i=0; i<v.size(); i++) {
+            ap->addItem(v[i]);
+        }
+    }
+    ap->constructItems();
 }
 
 void Game::render(){
@@ -232,9 +237,14 @@ Chip* Game::getSelectedChip(){
     return highlight;
 }
 
-void Game::initDemo(Widget * base){
+void commenceVictory(const Widget * w,Event e){
+    Game *g = (Game*) ((Button*)w)->userdata;
+    g->victory();
+}
+
+void Game::initDemo(Widget * ba){
     
-    vector<vec2> s;
+    /*vector<vec2> s;
     s.push_back(vec2(30,30));
     s.push_back(vec2(30,180));
     s.push_back(vec2(50,200));
@@ -254,13 +264,82 @@ void Game::initDemo(Widget * base){
     c1->addWire(w[0],c2);
     c2->addWire(w[1],c1);
     constructCircuits();
-    c1->sendCurrent(c2);
+    c1->sendCurrent(c2);*/
     
     // selection wheel
+    
+    base = ba;
+    randomTerrain(base->getSize(), 3);
     
     p = new Panel(base,vec2(50,50),vec2(256,256));
     p->setVisible(false);
     
-    AttPanel * ap = new AttPanel(base,vec2(0,300),vec2(200,100));
+    ap = new AttPanel(base,vec2(10,base->getSize().y-150),vec2(base->getSize().x/2,130));
     ap->initDemo();
+    
+    Button * b = new Button(base,vec2(base->getSize().x/2,base->getSize().y-70),vec2(64,64));
+    b->setText("Victory");
+    b->registerEvent("click", &commenceVictory);
+    b->userdata = (void*) this;
+}
+
+bool Game::_overlapWithExisted(vec2 pos,vec2 size){
+    for (vector<Chip *>::iterator i = c.begin(); i!=c.end(); i++) {
+        if ((*i)->dimension.overlap(quad(pos,size))) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Game::randomTerrain(vec2 s,unsigned int chipcount){
+    vec2 pos,size;
+    while (chipcount--) {
+        do {
+            size.x = rand()%200+100;
+            size.y = rand()%200+100;
+            pos.x = rand()%(int)(s.x-size.x);
+            pos.y = rand()%(int)(s.y-size.y);
+        } while (_overlapWithExisted(pos, size));
+        c.push_back(new Chip(base,pos,size));
+    }
+    for (vector<Chip*>::iterator i=c.begin(); i!=c.end(); i++) {
+        (*i)->setSize((*i)->getSize()-vec2(30,30));
+        (*i)->game = this;
+        for (vector<Chip*>::iterator j=c.begin(); j!=c.end(); j++) {
+            if ((*i)!=(*j)) {
+                Wire * wire = new Wire(vector<vec2>(),(*i),(*j));
+                w.push_back(wire);
+                (*i)->addWire(wire, *j);
+            }
+        }
+        
+    }
+    constructCircuits();
+}
+
+void Game::updateAttPanel(vector<AttSubitems> v){
+    for (unsigned int i=0; i<v.size(); i++) {
+        ap->addItem(v[i]);
+    }
+}
+
+void Game::victory(){
+    releaseWheel();
+    ap->setVisible(false);
+    Label * screenshield = new Label(base,vec2(0,0),base->getSize());
+    screenshield->setImage(ExampleRenderer::getInstance().getImage("gradient.png"));
+    screenshield->setImageSize(base->getSize());
+    screenshield->setColor(0, 0, 0,0);
+    Anim<Widget>::getInstance().animate((Widget*)screenshield, &Label::setOpacity, 0, 255, 5);
+    
+    
+    Label * bigtext = new Label(base,vec2(50,0),base->getSize()-vec2(50,0));
+    bigtext->setText("YOU HAVE LED YOUR BITS TO VICTORY");
+    bigtext->setFont(ExampleRenderer::getInstance().getFont("48"));
+    Anim<Widget>::getInstance().animate((Widget*)bigtext, &Label::setOpacity, 0, 255, 5);
+    
+    Button * backButton = new Button(base,vec2(base->getSize().x-100,base->getSize().y/2+30),vec2(64,64));
+    backButton->setImage(ExampleRenderer::getInstance().getImage("tick.png"));
+    Anim<Widget>::getInstance().animate((Widget*)backButton, &Widget::setOpacity, 0, 255, 5);
 }

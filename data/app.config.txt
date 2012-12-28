@@ -8,3 +8,7 @@
 # e.g.
 # [MyApplicationGroup]
 # MySetting   Description of what MySetting is for, its default values, etc
+[GX]
+DataCacheSize To increase maximum GX cache
+[S3E]
+DispFixRot Fix to Landscape displace

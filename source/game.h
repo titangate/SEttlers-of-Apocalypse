@@ -4,6 +4,7 @@
 #include <vector>
 #include "player.h"
 #include "example.h"
+#include "scribbler.h"
 
 class Panel;
 class Chip;
@@ -18,14 +19,19 @@ class Game {
     vector<Wire*> w;
     Panel * p;
     Chip * highlight;
+    AttPanel * ap;
+    bool _overlapWithExisted(vec2 pos,vec2 size);
+    Widget * base;
 public:
-    void initDemo(Widget *base);
+    void initDemo(Widget*);
     void update(double dt);
     void render();
-    void randomTerrain();
+    void randomTerrain(vec2 s,unsigned int chipcount);
     void constructCircuits();
     void popWheel(Chip*);
     void releaseWheel();
+    void updateAttPanel(vector<AttSubitems>);
+    void victory();
     Chip* getSelectedChip();
     Game():p(0),highlight(0){}
     
