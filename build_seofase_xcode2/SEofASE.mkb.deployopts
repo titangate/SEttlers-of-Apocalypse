@@ -1,6 +1,0 @@
-build "ARM GCC Release"
-outdir "/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode"
-!task !name "Default:android" "Package, Install and Run"
-!config !name "Default"
-!config <os> "win32" "android"
-configlist "Default",

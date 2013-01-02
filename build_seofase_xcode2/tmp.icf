@@ -1,8 +1,0 @@
-# comments and whitespace stripped by deployment tool
-[GX]
-DataCacheSize = 32768
-[S3E]
-DispFixRot = Free
-[s3e]
-SysAppVersion=0.0.1
-SysAppCaption="SEofASE"
