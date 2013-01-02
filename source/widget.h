@@ -42,6 +42,7 @@ public:
     virtual void setG(double _g){g = _g;}
     virtual void setB(double _b){b = _b;}
     virtual void setOpacity(double _a){a = _a;}
+    
     virtual void setColor(uint8 _r, uint8 _g, uint8 _b, uint8 _a = 255){
         r = _r;
         b = _b;

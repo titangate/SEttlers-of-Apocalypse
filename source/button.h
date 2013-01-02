@@ -5,7 +5,7 @@
 #include <string>
 using namespace std;
 class Button:public Widget{
-    bool active;
+    bool active,drawBG;
 public:
     void pointerReleased(vec2 p, s3ePointerButton key,int id);
     void render() ;
@@ -27,7 +27,7 @@ public:
     void clearChildren();*/
     void setText(const string & s){text = s;}
     void setActive(bool a){active = a;}
-    Button(Widget * pa,vec2 p,vec2 s,bool vis = true);
+    Button(Widget * pa,vec2 p,vec2 s,bool vis = true,bool drawBG = true);
     ~Button();
     double dt;
     string text;

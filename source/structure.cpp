@@ -12,12 +12,12 @@ void simpleCurrentCallback(Current* current, Chip* sourcechip, Chip*targetchip, 
     if (targetchip->getOwner() == current->getOwner()) {
         targetchip->chargeCount += current->getCharges();
     }
-    else if (targetchip->chargeCount > current->getCharges()){
+    else if (targetchip->chargeCount > targetchip->getDamage(current->getCharges())){
         targetchip->chargeCount -= targetchip->getDamage(current->getCharges());
     }
     else {
         targetchip->changeOwner(current->getOwner());
-        targetchip->chargeCount = current->getCharges()-targetchip->chargeCount;
+        targetchip->chargeCount = targetchip->getDamage(current->getCharges())-targetchip->chargeCount;
     }
 }
 
@@ -96,6 +96,10 @@ void Chip::changeOwner(Player * p){
         nb = 0;
         ng = 0;
     }
+    if (owner) {
+        owner->loseChip(this);
+    }
+    p->acquireChip(this);
     Anim<Chip>::getInstance().animate(this, &Chip::setR, r, nr, 1);
     Anim<Chip>::getInstance().animate(this, &Chip::setG, g, ng, 1);
     Anim<Chip>::getInstance().animate(this, &Chip::setB, b, nb, 1);
@@ -282,7 +286,7 @@ void UpdateCB(const Widget *w,const Event){
 vector<Widget*> Chip::getWheelWidgets(){
     vector<Widget*> l;
     for (vector<Upgrade*>::iterator i=upgrades.begin(); i!=upgrades.end(); i++) {
-        Button* b = new Button(0,vec2(0,0),vec2(80,40));
+        Button* b = new Button(0,vec2(0,0),vec2(80,80));
         //b->setText("a test");
         l.push_back(b);
         b->userdata = (void*) new struct upgradeC(this,*i);

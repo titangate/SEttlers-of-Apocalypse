@@ -283,6 +283,41 @@ void Game::initDemo(Widget * ba){
     b->userdata = (void*) this;
 }
 
+void Game::standardGame(Widget * ba){
+    base = ba;
+    randomTerrain(base->getSize(), 3);
+    
+    p = new Panel(base,vec2(50,50),vec2(256,256));
+    p->setVisible(false);
+    //a
+    ap = new AttPanel(base,vec2(10,base->getSize().y-150),vec2(base->getSize().x/2,130));
+    player = new Player();
+    Player * enemy = new Player();
+    enemy->r = enemy->g = enemy->b = 0;
+    
+    c[0]->changeOwner(player);
+    for (unsigned int i=1; i<c.size(); i++) {
+        c[i]->changeOwner(enemy);
+    }
+    player->setDelegate(this);
+    enemy->setDelegate(this);
+    players.insert(player);
+    players.insert(enemy);
+    //ap->initDemo();
+
+}
+
+void Game::elimate(Player* p){
+    players.erase(p);
+    if (p == player) {
+        fail();
+    }
+
+    else if (players.size()==1) {
+        victory();
+    }
+}
+
 bool Game::_overlapWithExisted(vec2 pos,vec2 size){
     for (vector<Chip *>::iterator i = c.begin(); i!=c.end(); i++) {
         if ((*i)->dimension.overlap(quad(pos,size))) {
@@ -322,6 +357,45 @@ void Game::updateAttPanel(vector<AttSubitems> v){
     for (unsigned int i=0; i<v.size(); i++) {
         ap->addItem(v[i]);
     }
+}
+
+void Game::clear(){
+    for (unsigned int i=0; i<c.size(); i++) {
+        c[i]->removeFromParent();
+        delete c[i];
+    }
+    c.clear();
+    for (unsigned int i=0; i<w.size(); i++) {
+        delete w[i];
+    }
+    w.clear();
+    for (set<Player *>::iterator i = players.begin();i!=players.end();) {
+        delete (*i);
+    }
+    players.clear();
+    player = 0;
+}
+
+void Game::fail(){
+    releaseWheel();
+    ap->setVisible(false);
+    Label * screenshield = new Label(base,vec2(0,0),base->getSize());
+    screenshield->setImage(ExampleRenderer::getInstance().getImage("gradient.png"));
+    screenshield->setImageSize(base->getSize());
+    screenshield->setColor(0, 0, 0,0);
+    Anim<Widget>::getInstance().animate((Widget*)screenshield, &Label::setOpacity, 0, 255, 5);
+    
+    
+    Label * bigtext = new Label(base,vec2(50,0),base->getSize()-vec2(50,0));
+    bigtext->setText("YOU HAVE BEEN ELIMINATED");
+    bigtext->setFont(ExampleRenderer::getInstance().getFont("48"));
+    Anim<Widget>::getInstance().animate((Widget*)bigtext, &Label::setOpacity, 0, 255, 5);
+    Anim<Widget>::getInstance().animate((Widget*)bigtext, &Label::setG, 255, 0, 5);
+    Anim<Widget>::getInstance().animate((Widget*)bigtext, &Label::setB, 255, 0, 5);
+    
+    Button * backButton = new Button(base,vec2(base->getSize().x-100,base->getSize().y/2+30),vec2(64,64));
+    backButton->setImage(ExampleRenderer::getInstance().getImage("tick.png"));
+    Anim<Widget>::getInstance().animate((Widget*)backButton, &Widget::setOpacity, 0, 255, 5);
 }
 
 void Game::victory(){

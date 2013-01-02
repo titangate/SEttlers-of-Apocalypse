@@ -1,0 +1,200 @@
+Doing: "Package, Install and Run" on Configuration Default to android
+
+don't know which argument to pass to s3e_deploy for os=android
+
+['os', 'endDir', '<config>', 'tasktype']
+
+Passing the following arguments to s3e_deploy: ['/Developer/Marmalade/6.1/s3e/bin/s3e_deploy', '-n', '--os', 'android', '--arch', 'arm', '--gcc', '--to-device', '--run', '/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deploy_temp.py']
+
+running s3e_deploy commandline: /Developer/Marmalade/6.1/s3e/bin/s3e_deploy -n --os android --arch arm --gcc --to-device --run /Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deploy_temp.py
+
+CWD=/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode
+
+Marmalade Deployment Tool v1.3
+
+Copyright (C) 2001-2012 Marmalade
+
+deploying SEofASE [0.0.1] [arm-release] for 'android' to folder: 'deployments/default/android/release/arm/intermediate_files'
+
+--> copying files ...
+
+generating temporary keypair: /Users/lolium/temp_s3e_key.txt
+
+ [execute] openssl
+
+--> updating s3e binary: compression=lzma signing=1 config-embedding=1
+
+ [execute] s3e_mod
+
+--> performing custom deployment steps for: 'android'
+
+Reading public key from /Users/lolium/temp_s3e_key.txt ...
+
+public key embedded in loader
+
+ [execute] aapt
+
+ [execute] jarsigner
+
+ [execute] zipalign
+
+SUCCESS: Package written to '/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deployments/default/android/release/arm' [took 1.27s]
+
+--> deploying to device from: deployments/default/android/release/arm
+
+ [execute] adb
+
+SUCCESS: S3E package deployed to device [took 9.24s]
+
+ [execute] adb
+
+Doing: "Package, Install and Run" on Configuration Default to android
+
+don't know which argument to pass to s3e_deploy for os=android
+
+['os', 'endDir', '<config>', 'tasktype']
+
+Passing the following arguments to s3e_deploy: ['/Developer/Marmalade/6.1/s3e/bin/s3e_deploy', '-n', '--os', 'android', '--arch', 'arm', '--gcc', '--to-device', '--run', '/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deploy_temp.py']
+
+running s3e_deploy commandline: /Developer/Marmalade/6.1/s3e/bin/s3e_deploy -n --os android --arch arm --gcc --to-device --run /Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deploy_temp.py
+
+CWD=/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode
+
+Marmalade Deployment Tool v1.3
+
+Copyright (C) 2001-2012 Marmalade
+
+deploying SEofASE [0.0.1] [arm-release] for 'android' to folder: 'deployments/default/android/release/arm/intermediate_files'
+
+--> copying files ...
+
+generating temporary keypair: /Users/lolium/temp_s3e_key.txt
+
+ [execute] openssl
+
+--> updating s3e binary: compression=lzma signing=1 config-embedding=1
+
+ [execute] s3e_mod
+
+--> performing custom deployment steps for: 'android'
+
+Reading public key from /Users/lolium/temp_s3e_key.txt ...
+
+public key embedded in loader
+
+ [execute] aapt
+
+ [execute] jarsigner
+
+ [execute] zipalign
+
+SUCCESS: Package written to '/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deployments/default/android/release/arm' [took 1.29s]
+
+--> deploying to device from: deployments/default/android/release/arm
+
+ [execute] adb
+
+SUCCESS: S3E package deployed to device [took 6.03s]
+
+ [execute] adb
+
+Doing: "Package, Install and Run" on Configuration Default to android
+
+don't know which argument to pass to s3e_deploy for os=android
+
+['os', 'endDir', '<config>', 'tasktype']
+
+Passing the following arguments to s3e_deploy: ['/Developer/Marmalade/6.1/s3e/bin/s3e_deploy', '-n', '--os', 'android', '--arch', 'arm', '--gcc', '--to-device', '--run', '/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deploy_temp.py']
+
+running s3e_deploy commandline: /Developer/Marmalade/6.1/s3e/bin/s3e_deploy -n --os android --arch arm --gcc --to-device --run /Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deploy_temp.py
+
+CWD=/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode
+
+Marmalade Deployment Tool v1.3
+
+Copyright (C) 2001-2012 Marmalade
+
+deploying SEofASE [0.0.1] [arm-release] for 'android' to folder: 'deployments/default/android/release/arm/intermediate_files'
+
+--> copying files ...
+
+generating temporary keypair: /Users/lolium/temp_s3e_key.txt
+
+ [execute] openssl
+
+--> updating s3e binary: compression=lzma signing=1 config-embedding=1
+
+ [execute] s3e_mod
+
+--> performing custom deployment steps for: 'android'
+
+Reading public key from /Users/lolium/temp_s3e_key.txt ...
+
+public key embedded in loader
+
+ [execute] aapt
+
+ [execute] jarsigner
+
+ [execute] zipalign
+
+SUCCESS: Package written to '/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deployments/default/android/release/arm' [took 1.27s]
+
+--> deploying to device from: deployments/default/android/release/arm
+
+ [execute] adb
+
+SUCCESS: S3E package deployed to device [took 6.23s]
+
+ [execute] adb
+
+Doing: "Package, Install and Run" on Configuration Default to android
+
+don't know which argument to pass to s3e_deploy for os=android
+
+['os', 'endDir', '<config>', 'tasktype']
+
+Passing the following arguments to s3e_deploy: ['/Developer/Marmalade/6.1/s3e/bin/s3e_deploy', '-n', '--os', 'android', '--arch', 'arm', '--gcc', '--to-device', '--run', '/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deploy_temp.py']
+
+running s3e_deploy commandline: /Developer/Marmalade/6.1/s3e/bin/s3e_deploy -n --os android --arch arm --gcc --to-device --run /Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deploy_temp.py
+
+CWD=/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode
+
+Marmalade Deployment Tool v1.3
+
+Copyright (C) 2001-2012 Marmalade
+
+deploying SEofASE [0.0.1] [arm-release] for 'android' to folder: 'deployments/default/android/release/arm/intermediate_files'
+
+--> copying files ...
+
+generating temporary keypair: /Users/lolium/temp_s3e_key.txt
+
+ [execute] openssl
+
+--> updating s3e binary: compression=lzma signing=1 config-embedding=1
+
+ [execute] s3e_mod
+
+--> performing custom deployment steps for: 'android'
+
+Reading public key from /Users/lolium/temp_s3e_key.txt ...
+
+public key embedded in loader
+
+ [execute] aapt
+
+ [execute] jarsigner
+
+ [execute] zipalign
+
+SUCCESS: Package written to '/Users/lolium/SEttlers-of-Apocalypse/build_seofase_xcode/deployments/default/android/release/arm' [took 1.27s]
+
+--> deploying to device from: deployments/default/android/release/arm
+
+ [execute] adb
+
+SUCCESS: S3E package deployed to device [took 6.09s]
+
+ [execute] adb
+

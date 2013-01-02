@@ -1,19 +1,31 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <vector>
+#include <set>
 #include <string>
 //#include "resource.h"
 #include "structure.h"
-
-using namespace std;
 class Chip;
-class Player {
-    vector<Chip*> chips;
-public:
+class Player;
+class PlayerDelegate {
     
+    
+public:
+    virtual void elimate(Player*) = 0;
+    virtual void acquiredChip(Player*,Chip *)=0;
+    virtual void loseChip(Player*,Chip *)=0;
+};
+
+class Player {
+    std::set<Chip*> chips;
+    PlayerDelegate * del;
+public:
+    bool eliminated(){return chips.empty();}
+    void acquireChip(Chip*);
+    void loseChip(Chip*);
     uint8 r,g,b;
-    Player():r(125),g(80),b(250){}
+    Player():r(125),g(80),b(250),del(0){}
+    void setDelegate(PlayerDelegate* d){del = d;}
 };
 
 #endif

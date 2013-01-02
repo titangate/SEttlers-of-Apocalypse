@@ -7,7 +7,7 @@
 #include "button.h"
 #include "structure.h"
 #include "game.h"
-
+#include "menu.h"
 #include <vector>
 
 class widgetControl: public controlDelegate {
@@ -29,7 +29,7 @@ public:
 CIw2DFont *g_Font;
 int main()
 {
-    
+    srand(time(0));
     // Initialise Marmalade graphics system and Iw2D module
     IwGxInit();
     s3eSurfaceSetInt(S3E_SURFACE_DEVICE_ORIENTATION_LOCK, S3E_SURFACE_LANDSCAPE);
@@ -56,8 +56,9 @@ int main()
     }
     Widget * base = new Widget(0,vec2(0,0),vec2(sw,sh));
     Control::getInstance().registerDelegate(new widgetControl(base));
-    Game * g = new Game();
-    g->initDemo(base);
+    Menu * m = new Menu(base);
+    //Game * g = new Game();
+    //g->standardGame(base);
         //Button * b = new Button(p,vec2(100,100),vec2(200,50)); b->setText("adsfasdf");
    
     // Initialise Marmalade graphics system and Iw2D module
@@ -94,8 +95,8 @@ int main()
         Anim<Wire>::getInstance().update(delta);
         Anim<Widget>::getInstance().update(delta);
         base->update(delta);
-        g->update(delta);
-        g->render();
+        m->update(delta);
+        m->render();
         base->render();
         // Show the surface
         Iw2DSurfaceShow();

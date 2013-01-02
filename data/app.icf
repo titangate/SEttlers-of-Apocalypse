@@ -16,7 +16,7 @@
 # Some conditional operations are also permitted, see the
 # S3E documentation for details.
 [GX]
-DataCacheSize = 32768
+DataCacheSize = 65535
 
 [S3E]
 DispFixRot = Free

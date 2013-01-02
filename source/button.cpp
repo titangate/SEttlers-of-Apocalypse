@@ -16,13 +16,17 @@ void Button::render(){
     else{
         ExampleRenderer::getInstance().setColor(r, g, b, a);
     }
-    ExampleRenderer::getInstance().drawImage("buttonbg.png", dimension.pos, 0,dimension.size/vec2(128,128));
+    if (drawBG) {
+        ExampleRenderer::getInstance().drawImage("buttonbg.png", dimension.pos, 0,dimension.size/vec2(128,128));
+    }
+    
     if (image) {
         ExampleRenderer::getInstance().drawImage(image, dimension.pos, 0,dimension.size/vec2(image->GetWidth(),image->GetHeight()));
     }
     ExampleRenderer::getInstance().printf(text.c_str(), dimension.pos,IW_2D_FONT_ALIGN_CENTRE,IW_2D_FONT_ALIGN_CENTRE,dimension.size);
     
     ExampleRenderer::getInstance().resetColor();
+    Widget::render();
 }
 
 void Button::update(double t){
@@ -42,7 +46,7 @@ void Button::update(double t){
 }
 
 void Button::setSize(vec2 s){
-    s.y = s.x;
+    //s.y = s.x;
     Widget::setSize(s);
 }
 
@@ -52,7 +56,7 @@ Button::~Button(){
     }
 }
 
-Button::Button(Widget * pa,vec2 p,vec2 s,bool vis):Widget(pa,p,s,vis),dt(0),userdata(0),image(0),active(true){
+Button::Button(Widget * pa,vec2 p,vec2 s,bool vis,bool drawBG):Widget(pa,p,s,vis),dt(0),userdata(0),image(0),active(true),drawBG(drawBG){
     setText("");
     setSize(s);
 }
