@@ -7,7 +7,7 @@ Menu::Menu(Widget * w){
     g = new Game();
     g->standardGame(w);
     
-    screenshield = new Label(base,vec2(0,0),base->getSize());
+    /*screenshield = new Label(base,vec2(0,0),base->getSize());
     screenshield->setImage(ExampleRenderer::getInstance().getImage("gradient.png"));
     screenshield->setImageSize(base->getSize());
     screenshield->setColor(0, 0, 0,0);
@@ -19,7 +19,7 @@ Menu::Menu(Widget * w){
     l->setImage(ExampleRenderer::getInstance().getImage("chip.png"));
     l->setFont(ExampleRenderer::getInstance().getFont("24"));
     l->setImageSize(vec2(40,40));
-    l->setText("NEW GAME");
+    l->setText("NEW GAME");*/
     
    
 }

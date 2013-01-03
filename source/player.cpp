@@ -17,7 +17,7 @@ void Player::loseChip(Chip * c){
     }
     if (eliminated()) {
         if (del) {
-            del->elimate(this);
+            del->eliminate(this);
         }
     }
 }

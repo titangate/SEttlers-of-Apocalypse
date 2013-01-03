@@ -11,9 +11,10 @@ class PlayerDelegate {
     
     
 public:
-    virtual void elimate(Player*) = 0;
+    virtual void eliminate(Player*) = 0;
     virtual void acquiredChip(Player*,Chip *)=0;
     virtual void loseChip(Player*,Chip *)=0;
+    //virtual void sendCurrent
 };
 
 class Player {

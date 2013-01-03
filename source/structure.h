@@ -39,7 +39,7 @@ struct AttSubitems{
 
 void simpleCurrentCallback(const Current* current, const Chip* sourcechip, const Chip*targetchip, const Wire* wire);
 class Chip: public Widget {
-
+    friend class AI;
     //quad dim;
     
 public:
@@ -73,7 +73,7 @@ public:
     
     virtual void changeOwner(Player * p);
     Player * getOwner(){return owner;}
-    virtual void sendCurrent(Chip *c);
+    virtual void sendCurrent(Chip *c,int count = -1);
     void pointerPressed(vec2 p, s3ePointerButton key,int id);
     void pointerReleased(vec2 p, s3ePointerButton key,int id);
     void setCurrentUpgrade(Upgrade *);
@@ -88,6 +88,7 @@ class Wire {
     Player * owner;
     uint8 r,g,b;
     double dt;
+    unsigned int length;
 public:
     Game * game;
     Chip* source;
@@ -102,8 +103,9 @@ public:
     void setSegments(vector<vec2>seg);
     void update(double dt);
     void render();
-    void sendCurrent(double speed,Chip* source,Chip *target,CurrentCallback cb);
+    void sendCurrent(double speed,int,Chip* source,Chip *target,CurrentCallback cb);
     void killCurrent(Current* c);
+    unsigned int getLength(){return length;}
     virtual void changeOwner(Player * p);
     Player * getOwner(){return owner;}
 };
@@ -144,7 +146,9 @@ public:
                                vec2(16,16)
                                );
     }
-    
+    Chip * getSource(){return wire->source;}
+    Chip * getTarget(){return wire->target;}
+    double getCurrentSpeed(){return currentSpeed;}
     void update (double dt);
     void render();
 };

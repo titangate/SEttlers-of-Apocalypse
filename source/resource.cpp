@@ -52,6 +52,13 @@ void GenerationUpgrade::applyUpgrade(unsigned int level){
     c->generateRate += genRateModifier;
 }
 
+void GenerationUpgrade::applyUpgrade(SimpleChip * sc, unsigned int level) {
+    //sc->generateRate -= genRateModifier;
+    vec2 s = c->dimension.size;
+    //genRateModifier = level * s.x*s.y/20000;
+    sc->generateRate = sc->generateRate - genRateModifier + level * s.x*s.y/20000;
+}
+
 vector<AttSubitems> GenerationUpgrade::getAttSubitems(unsigned int level,vector<AttSubitems> at){
     vec2 s = c->dimension.size;
     struct AttSubitems att = {
@@ -84,6 +91,10 @@ double FortificationUpgrade::getFortification(unsigned int level){
 void FortificationUpgrade::applyUpgrade(unsigned int level){
     Upgrade::applyUpgrade(level);
     c->fortification = getFortification(level);
+}
+
+void FortificationUpgrade::applyUpgrade(SimpleChip* sc, unsigned int level) {
+    sc->fortification = getFortification(level);
 }
 
 

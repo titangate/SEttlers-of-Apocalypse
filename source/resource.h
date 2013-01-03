@@ -10,6 +10,7 @@
 #define __SEofASE__resource__
 
 #include "structure.h"
+#include "ai.h"
 
 
 class CostItem {
@@ -22,9 +23,9 @@ public:
 };
 
 class TimeCostItem {
+public:
     double time;
     double time_elapsed;
-public:
     void applyUpgrade(Chip* c){
         
     }
@@ -89,6 +90,7 @@ public:
         }*/
         lvl = level;
     }
+    virtual void applyUpgrade(SimpleChip*, unsigned int level) = 0;
     virtual bool upgradable(unsigned int level){
         for (vector<CostItem*>::iterator i=costs[level].begin(); i!=costs[level].end(); i++) {
             if (!(*i)->upgradable(c))return false;
@@ -129,6 +131,7 @@ public:
     virtual string getName(){return "Generation";}
     CIw2DImage* getIcon(){return ExampleRenderer::getInstance().getImage("generation.png");}
     void applyUpgrade(unsigned int level);
+    void applyUpgrade(SimpleChip*, unsigned int level);
     virtual vector<AttSubitems> getAttSubitems(unsigned int level,vector<AttSubitems> at = vector<AttSubitems>());
     GenerationUpgrade(Chip * chip,unsigned int level = 0,unsigned int maxlevel = 10);
 };
@@ -139,7 +142,7 @@ public:
     virtual string getName(){return "Fortification";}
     CIw2DImage* getIcon(){return ExampleRenderer::getInstance().getImage("fortification.png");}
     void applyUpgrade(unsigned int level);
-    
+    void applyUpgrade(SimpleChip*, unsigned int level);
     virtual vector<AttSubitems> getAttSubitems(unsigned int level,vector<AttSubitems> at = vector<AttSubitems>());
     FortificationUpgrade(Chip * chip,unsigned int level = 0,unsigned int maxlevel = 10);
 };

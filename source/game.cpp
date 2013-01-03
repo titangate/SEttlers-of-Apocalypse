@@ -72,7 +72,7 @@ vector<vec2i> constructPath(map<vec2i, vec2i> &comefrom,vector<vector<Widget*> >
             
             r.push_back(current);
             angle = comefrom[current].angleWith(current);
-            printf("%g\n",angle);
+            //printf("%g\n",angle);
         }
         //r.push_back(comefrom[current]);
         current = comefrom[current];
@@ -117,7 +117,7 @@ vector<vec2i> astar(vec2i start,vec2i finish,vector<vector<Widget*> > g,Widget* 
             continue;
         }
         closedset[newitem.item] = true;
-        printf("%d %d testing with %d\n",current.x,current.y,newitem.distance);
+        //printf("%d %d testing with %d\n",current.x,current.y,newitem.distance);
         for (int i=0; i<8; i++) {
             neinode n = neighbour[i];
             vec2i tester = current + n.item;
@@ -269,7 +269,7 @@ void Game::initDemo(Widget * ba){
     // selection wheel
     
     base = ba;
-    randomTerrain(base->getSize(), 3);
+    randomTerrain(base->getSize(), 10);
     
     p = new Panel(base,vec2(50,50),vec2(256,256));
     p->setVisible(false);
@@ -285,7 +285,7 @@ void Game::initDemo(Widget * ba){
 
 void Game::standardGame(Widget * ba){
     base = ba;
-    randomTerrain(base->getSize(), 3);
+    randomTerrain(base->getSize(), 10);
     
     p = new Panel(base,vec2(50,50),vec2(256,256));
     p->setVisible(false);
@@ -307,7 +307,7 @@ void Game::standardGame(Widget * ba){
 
 }
 
-void Game::elimate(Player* p){
+void Game::eliminate(Player* p){
     players.erase(p);
     if (p == player) {
         fail();
@@ -331,8 +331,8 @@ void Game::randomTerrain(vec2 s,unsigned int chipcount){
     vec2 pos,size;
     while (chipcount--) {
         do {
-            size.x = rand()%200+100;
-            size.y = rand()%200+100;
+            size.x = rand()%100+80;
+            size.y = rand()%100+80;
             pos.x = rand()%(int)(s.x-size.x);
             pos.y = rand()%(int)(s.y-size.y);
         } while (_overlapWithExisted(pos, size));

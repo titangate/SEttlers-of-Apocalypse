@@ -170,7 +170,7 @@ inline std::string toString(T n)
 }
 
         
-typedef vec2_t<float> vec2;
+typedef vec2_t<double> vec2;
 
 class quad{
 public:

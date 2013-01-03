@@ -181,9 +181,12 @@ void Chip::update(double t){
     }
 }
 
-void Chip::sendCurrent(Chip *c){
+void Chip::sendCurrent(Chip *c,int count){
+    if (count == -1) {
+        count = (int)(this->chargeCount/2);
+    }
     if (wires.find(c)!=wires.end()) {
-        wires[c]->sendCurrent(100,this,c,&simpleCurrentCallback);
+        wires[c]->sendCurrent(100,count,this,c,&simpleCurrentCallback);
     }
 }
 
@@ -300,6 +303,13 @@ vector<Widget*> Chip::getWheelWidgets(){
 
 void Wire::setSegments(vector<vec2> seg){
     segments = seg;
+    length = 0;
+    for (unsigned int i=1; i<segments.size(); i++) {
+        vec2 a,b;
+        a = segments[i];
+        b=segments[i-1];
+        length += (b-a).Length();
+    }
 }
 
 void Wire::update(double dt){
@@ -351,14 +361,15 @@ void Wire::render(){
     ExampleRenderer::getInstance().resetColor();
 }
 
-void Wire::sendCurrent(double speed, Chip *source, Chip *target, CurrentCallback cb){
+void Wire::sendCurrent(double speed, int charges, Chip *source, Chip *target, CurrentCallback cb){
     bool reverse = false;
     if (source == this->target) {
         reverse = true;
     }
-    
-    unsigned int charges = (source->chargeCount/2);
+    /*
+    unsigned int charges = (source->chargeCount/2);*/
     source->chargeCount -= charges;
+    
     Current* c = new Current(this,1,speed,reverse,cb,charges);
     c->changeOwner(source->getOwner());
     c->game = game;
@@ -413,7 +424,7 @@ void Current::update(double dt){
     //if (currentSeg==0) b=wire->segments[wire->segments.size()-1];
     b=wire->segments[currentSeg-1];
     double l = (b-a).Length();
-    pos = b + (float)(distanceOnSeg/l)*(a-b);
+    pos = b + (double)(distanceOnSeg/l)*(a-b);
     p->setPosition(pos);
     p->update(dt);
     if (l<distanceOnSeg) {

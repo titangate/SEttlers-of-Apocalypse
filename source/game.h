@@ -13,6 +13,19 @@ struct map_coord {
     int x,y;
 };
 
+
+class GameDelegate {
+    
+    
+public:
+    virtual void chipCaptured(Player *,Chip*) = 0;
+    virtual void currentSent(Current*) = 0;
+    virtual void currentReceived(Current*) = 0;
+    virtual void chipUpgradeBegun(Chip*) = 0;
+    virtual void chipUpgradeComplete(Chip*) = 0;
+};
+
+
 using namespace std;
 
 class Game :public PlayerDelegate {
@@ -40,7 +53,7 @@ public:
     void fail();
     Chip* getSelectedChip();
     Game():p(0),highlight(0){}
-    virtual void elimate(Player* p);
+    virtual void eliminate(Player* p);
     virtual void acquiredChip(Player*,Chip *){}
     virtual void loseChip(Player*,Chip *){}
     
