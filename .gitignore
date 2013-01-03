@@ -12,3 +12,6 @@
 *.a
 
 build*
+
+# Mac Generated files
+._*

@@ -220,7 +220,7 @@ double Chip::getDamage(double v){
 
 vector<AttSubitems> Chip::getAttSubitems(){
     vector<AttSubitems> v;
-    v.push_back((struct AttSubitems){
+	AttSubitems temp = {
         ExampleRenderer::getInstance().getImage("button_glow.png"),
         "Charges",
         toString((int)chargeCount),
@@ -228,8 +228,9 @@ vector<AttSubitems> Chip::getAttSubitems(){
         "",
         ATT_BASE,
         ATT_NEUTRUAL
-    });
-    v.push_back((struct AttSubitems){
+    };
+    v.push_back(temp);
+	AttSubitems temp2 = {
         ExampleRenderer::getInstance().getImage("generation.png"),
         "Generation",
         toString((int)(generateRate*60)),
@@ -237,12 +238,13 @@ vector<AttSubitems> Chip::getAttSubitems(){
         "",
         ATT_BASE,
         ATT_NEUTRUAL
-    });
+    };
+    v.push_back(temp2);
     stringstream ss;
     ss.setf(ios::fixed, ios::floatfield);
     ss.precision(1);
     ss << 100*fortification << "%";
-    v.push_back((struct AttSubitems){
+	AttSubitems temp3 = {
         ExampleRenderer::getInstance().getImage("fortification.png"),
         "Fortification",
         ss.str(),
@@ -250,7 +252,8 @@ vector<AttSubitems> Chip::getAttSubitems(){
         "",
         ATT_BASE,
         ATT_NEUTRUAL
-    });
+    };
+	v.push_back(temp3);
     vector<AttSubitems> uv;
     if (currentUpgrade) {
         uv = currentUpgrade->getAttSubitems(currentUpgrade->getLevel()+1);

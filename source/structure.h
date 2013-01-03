@@ -27,14 +27,23 @@ enum attCategory {
     ATT_DISABLE = ATT_BASE
 };
 
-struct AttSubitems{
+class AttSubitems{
+public:
     CIw2DImage * icon;
     string item;
     string current;
     string modifier;
     string after;
     attCategory cat;
-    attCategory boost;
+    attCategory boost;/*
+	AttSubItems( CIw2DImage * icon,
+    string item,
+    string current,
+    string modifier,
+    string after,
+    attCategory cat,
+	attCategory boost):icon(icon),item(item),current(current),modifier(modifier),after(after),cat(cat){
+	}*/
 };
 
 void simpleCurrentCallback(const Current* current, const Chip* sourcechip, const Chip*targetchip, const Wire* wire);
