@@ -6,6 +6,9 @@
 #include "example.h"
 #include "scribbler.h"
 #include <set>
+//#include "ai.h"
+
+class AI;
 
 class Panel;
 class Chip;
@@ -37,6 +40,7 @@ class Game :public PlayerDelegate {
     bool _overlapWithExisted(vec2 pos,vec2 size);
     Widget * base;
     set<Player*> players;
+    set<AI*> ais;
     Player * player;
 public:
     void initDemo(Widget*);

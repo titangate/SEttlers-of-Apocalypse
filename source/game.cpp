@@ -7,10 +7,14 @@
 #include "scribbler.h"
 #include "anim.h"
 #include "button.h"
+#include "ai.h"
 
 typedef std::vector<Chip*> cp;
 typedef std::vector<Wire*> wp;
 void Game::update(double dt){
+    for (set<AI*>::iterator i = ais.begin(); i!=ais.end(); i++) {
+        (*i)->update(dt);
+    }
     for (wp::iterator i=w.begin(); i!=w.end(); i++) {
         (*i)->update(dt);
     }
@@ -269,7 +273,7 @@ void Game::initDemo(Widget * ba){
     // selection wheel
     
     base = ba;
-    randomTerrain(base->getSize(), 10);
+    randomTerrain(base->getSize(), 3);
     
     p = new Panel(base,vec2(50,50),vec2(256,256));
     p->setVisible(false);
@@ -285,7 +289,7 @@ void Game::initDemo(Widget * ba){
 
 void Game::standardGame(Widget * ba){
     base = ba;
-    randomTerrain(base->getSize(), 10);
+    randomTerrain(base->getSize(), 3);
     
     p = new Panel(base,vec2(50,50),vec2(256,256));
     p->setVisible(false);
@@ -293,6 +297,8 @@ void Game::standardGame(Widget * ba){
     ap = new AttPanel(base,vec2(10,base->getSize().y-150),vec2(base->getSize().x/2,130));
     player = new Player();
     Player * enemy = new Player();
+    SimpleAI * ai = new SimpleAI(this, enemy);
+    ais.insert(ai);
     enemy->r = enemy->g = enemy->b = 0;
     
     c[0]->changeOwner(player);

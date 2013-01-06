@@ -43,14 +43,14 @@ class AI: public GameDelegate {
     
 public:
     AI(Game* g,Player* p):game(g),me(p){}
-    virtual void update() = 0;
+    virtual void update(double dt) = 0;
     SimpleChip predict(Chip*, double t); // time in seconds from now
 };
 
 class SimpleAI : public AI {
 
 public:
-    virtual void update();
+    virtual void update(double dt);
     virtual void chipCaptured(Player *,Chip*);
     virtual void currentSent(Current*);
     virtual void currentReceived(Current*);

@@ -16,7 +16,7 @@ SimpleChip AI::predict(Chip* c, double t) {
     SimpleChip s(c);
     vector<pair<double, SimpleCurrent*> > currentImpacts;
     double upgradeCompletionTime;
-    TimeCostItem 
+    //TimeCostItem
     for (map<Player*, set<SimpleCurrent*> >::iterator i = currents.begin(); i != currents.end(); i++) {
         for (set<SimpleCurrent*>::iterator cur = i->second.begin(); cur != i->second.end(); cur++) {
             if ((*cur)->src == c) {
@@ -25,5 +25,5 @@ SimpleChip AI::predict(Chip* c, double t) {
         }
     }
     sort(currentImpacts.begin(), currentImpacts.end());
-    c->currentUpgrade->getTimeCost()
+    //c->currentUpgrade->getTimeCost()
 }

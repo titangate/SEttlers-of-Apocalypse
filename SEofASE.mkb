@@ -160,3 +160,14 @@ files
     tick.png
     
 }
+
+deployments
+{
+name='s3eBasic'
+ 
+["Test Config"]
+playbook
+playbook-author='ring0dev'
+playbook-authorid='gYAAgIGEQzFr8JFxHZP616xbre8'
+
+}
