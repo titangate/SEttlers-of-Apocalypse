@@ -24,6 +24,7 @@ public:
 
 class SimpleCurrent {
 public:
+	Current* current;
     Player* owner;
     unsigned int charges;
     Chip* src;
@@ -40,22 +41,26 @@ class AI: public GameDelegate {
     Player * neutral;
     set<Player*> enemies;
     map<Player*, set<SimpleCurrent*> > currents;
-    
+    virtual void update() = 0;
 public:
-    AI(Game* g,Player* p):game(g),me(p){}
-    virtual void update(double dt) = 0;
-    SimpleChip predict(Chip*, double t); // time in seconds from now
+    AI(Game* g,Player* p);
+	virtual ~AI();
+	virtual void update(double dt) {update();}
+	virtual void chipCaptured(Player *,Chip*){update();}
+    virtual void currentSent(Current*);
+    virtual void currentReceived(Current*);
+	virtual void chipUpgradeBegun(Chip*){update();}
+	virtual void chipUpgradeComplete(Chip*){update();}
+
+	SimpleChip predict(Chip*, double t); // time in seconds from now
 };
 
 class SimpleAI : public AI {
 
 public:
-    virtual void update(double dt);
-    virtual void chipCaptured(Player *,Chip*);
-    virtual void currentSent(Current*);
-    virtual void currentReceived(Current*);
-    virtual void chipUpgraded(Chip*);
-    virtual void chipUpgradeComplete(Chip*);
+	SimpleAI(Game* g, Player* p):AI(g,p){}
+	~SimpleAI();
+	void update(double dt);
 };
 
 #endif
